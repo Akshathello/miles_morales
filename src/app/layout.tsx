@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/Components/ui/Navbar";
+import LandingPage from "@/Components/ui/LandingPage";
+import Marquee from "@/Components/ui/Marquee";
+// import Preload from "./Preloader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,15 +16,13 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) { 
+}>) {
   return (
     <html lang="en">
-    
-      <body className={inter.className} >
-        <Navbar/>
-        
-        {children}
+      <body className={inter.className}>
+        <div> {/* <Preload /> */}</div>
 
+        {children}
       </body>
     </html>
   );

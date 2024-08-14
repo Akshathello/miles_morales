@@ -14,10 +14,13 @@ function WebStudioElement() {
           </div>
         </div>
       </div>
-      <div className="text-white text-[3rem] justify-center leading-none font-serif text-center">
-        A studio meant to intricately design a fabric of responsive website,
-        which indulges the consumer into both confined and conflating experience
-        designed between the lines of consumer experience.
+
+      <div className=" bg-gradient-to-r from-orange-500 to bg-purple-600 container justify-center leading-none p-2 rounded-lg ">
+        <div className="text-white text-[3rem] font-serif text-center rounded-md p-2 bg-black">
+          A studio meant to intricately design a fabric of responsive website,
+          which indulges the consumer into both confined and conflating
+          experience designed between the lines of consumer experience.
+        </div>
       </div>
     </div>
   );
