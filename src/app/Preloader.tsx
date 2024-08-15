@@ -1,92 +1,118 @@
-// "use client";
+"use client";
 
-// import { useGSAP } from "@gsap/react";
-// import React, { useEffect, useRef, useState } from "react";
-// import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import React, { Children, useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
-// gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP);
 
-// function Preload() {
-//   const container = useRef<HTMLDivElement>(null);
-//   const tl = useRef<gsap.core.Timeline | null>(null);
+interface PreloadProps {
+  children: React.ReactNode;
+}
 
-//   useGSAP(
-//     () => {
-//       if (container.current) {
-//         tl.current = gsap.timeline();
+function Preload({ children }: PreloadProps) {
+  const container = useRef<HTMLDivElement>(null);
+  const tl = useRef<gsap.core.Timeline | null>(null);
 
-//         tl.current
+  useGSAP(
+    () => {
+      if (container.current) {
+        tl.current = gsap.timeline();
 
-//           .from(container.current, {
-//             opacity: 0,
-//             duration: 0.3,
-//             delay: 0.2,
-//             stagger: 1,
-//           })
+        tl.current
 
-//           .from(container.current, {
-//             transform: "scaleX(0) scaleY(0) translateX(80%)",
-//             borderRadius: "100px",
-//             duration: 2,
-//             ease: "expo.out",
-//           });
-//       }
-//     },
-//     {
-//       scope: container,
-//     }
-//   );
+          .from(container.current, {
+            opacity: 1,
+            duration: 0.6,
+            delay: 0.2,
+            stagger: 0.6,
+          })
 
-//   const [currentValue, setCurrentValue] = useState(0);
-//   const [loading, setLoading] = useState(true);
+          .from(container.current, {
+            transform: "scaleX(0.5) scaleY(0) translateX(50%)",
+            borderRadius: "100px",
+            duration: 3,
+            ease: "expo.out",
+          });
+      }
+    },
+    {
+      scope: container,
+    }
+  );
 
-//   useEffect(() => {
-//     const counterElement = document.querySelector(".counter");
+  const [currentValue, setCurrentValue] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-//     if (counterElement) {
-//       setTimeout(() => {
-//         (counterElement as HTMLElement).style.display = "none";
-//         setLoading(false);
-//       }, 3000);
-//     }
+  useEffect(() => {
+    const counterElement = document.querySelector(".counter");
 
-//     function updateCounter() {
-//       let newValue = currentValue + Math.floor(Math.random() * 5) + 1;
+    let interval: NodeJS.Timeout | null = null;
 
-//       if (newValue === 100) {
-//         return;
-//       }
+    function updateCounter() {
+      setCurrentValue((prevValue) => {
+        let newValue = prevValue + Math.floor(Math.random() * 6) + 1;
 
-//       if (newValue > 100) {
-//         newValue = 100;
-//       }
+        if (newValue >= 80) {
+          newValue = prevValue + Math.floor(Math.random() * 1) + 1;
 
-//       if (counterElement) {
-//         counterElement.textContent = newValue.toString();
-//       }
+          interval = setInterval(
+            updateCounter,
+            Math.floor(Math.random() * 100) + 50
+          );
+        }
 
-//       let delay = Math.floor(Math.random() * 500) + 50;
+        if (newValue >= 101) {
+          newValue = 101;
 
-//       setTimeout(updateCounter, delay);
-//       setCurrentValue(newValue);
-//     }
+          if (counterElement) {
+            setTimeout(() => {
+              (counterElement as HTMLElement).style.display = "none";
+            });
+            setLoading(false);
+          }
+          if (interval) clearInterval(interval);
+        }
 
-//     updateCounter();
-//   }, [currentValue]);
+        if (counterElement) {
+          counterElement.textContent = newValue.toString();
+        }
 
-//   //   window.addEventListener("load", () => {
-//   //     const Preload = document.querySelector(".preloader");
-//   //     Preload!.classList.add("preload-finish");
-//   //   });
+        return newValue;
+      });
+    }
 
-//   return (
-//     <div ref={container} id="LoadingAnimation">
-//       <div className="counter font-mono text-[15rem] font-extrabold min-h-screen bg-black text-white justify-end items-end flex p-14">
-//         {" "}
-//         {currentValue}
-//       </div>
-//     </div>
-//   );
-// }
+    interval = setInterval(updateCounter, Math.floor(Math.random() * 100) + 55);
 
-// export default Preload;
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [loading]);
+
+  return (
+    <div>
+      {loading ? (
+        <>
+          <div className="flex absolute text-[10rem] stroke-transparent font-serif -z-10 leading-none justify-center items-center">
+            {" "}
+            Embarking on <br></br> a Creative <br /> Journey.
+          </div>
+          <div
+            ref={container}
+            id="LoadingAnimation"
+            className="overflow-hidden min-h-screen"
+          >
+            <div className="counter font-mono text-[15rem] font-extrabold min-h-screen bg-black text-white justify-end items-end flex p-14">
+              {" "}
+              {currentValue}
+            </div>
+          </div>
+        </>
+      ) : (
+        children
+      )}
+    </div>
+  );
+}
+
+export default Preload;

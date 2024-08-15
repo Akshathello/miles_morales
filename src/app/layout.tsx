@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LandingPage from "@/Components/ui/LandingPage";
 import Marquee from "@/Components/ui/Marquee";
-// import Preload from "./Preloader";
+import Preload from "./Preloader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div> {/* <Preload /> */}</div>
-
-        {children}
+        <div>
+          {" "}
+          <Preload>{children}</Preload>{" "}
+        </div>
       </body>
     </html>
   );
