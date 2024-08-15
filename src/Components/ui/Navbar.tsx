@@ -91,7 +91,7 @@ function Navbar() {
 
           <Link
             href="/sign-up"
-            className="transition hover:duration-300 border-2 border-white hover:bg-orange-500/80 duration-200 text-white font-semibold p-1 rounded-lg px-3 font-serif "
+            className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200 text-white font-semibold p-1 rounded-lg px-3 font-serif "
           >
             Get Started
           </Link>

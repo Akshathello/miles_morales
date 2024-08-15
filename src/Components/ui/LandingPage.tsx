@@ -11,7 +11,6 @@ gsap.registerPlugin(useGSAP);
 function LandingPage() {
   const container = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
-  // useEffect(() => {
 
   useGSAP(
     () => {
@@ -24,20 +23,16 @@ function LandingPage() {
           })
 
           .from(container.current, {
-            transform: "scaleX(0.7) scaleY(0) translateY(80%)",
-            borderRadius: "100px",
+            transform: "scaleX(0.5) scaleY(0) translateY(80%)",
             duration: 2,
-            ease: "expo.out",
-            onStart: () => console.log("radius animation started"),
-            onComplete: () => console.log("radius animation completed"),
+            ease: "ease.out",
+            borderRadius: "100px",
           })
 
           .from("#nav", {
             opacity: 0,
             duration: 0.2,
             stagger: 0.3,
-            onStart: () => console.log("nav animation started"),
-            onComplete: () => console.log("Nav animation completed"),
           })
 
           .from("#Writeup", {
@@ -59,8 +54,8 @@ function LandingPage() {
   );
 
   return (
-    <div id="landingPage" ref={container}>
-      <div className="min-h-screen bg-black ">
+    <div id="landingPage" ref={container} className="overflow-hidden">
+      <div className="max-h-screen bg-black">
         <Navbar />
 
         <div className=" flex items-center justify-center pb-5">
@@ -68,7 +63,7 @@ function LandingPage() {
             id="Writeup"
             className="bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text"
           >
-            <div className="font-serif text-[10rem] leading-none hover:text-orange-500 transition text-center">
+            <div className="font-serif text-[10rem] leading-none hover:text-orange-500 duration-300 text-center">
               {" "}
               Miles <br></br> Morales
             </div>
