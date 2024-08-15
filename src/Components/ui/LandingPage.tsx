@@ -1,7 +1,6 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import React, { useRef } from "react";
 import gsap from "gsap";
@@ -23,6 +22,7 @@ function LandingPage() {
           .from(container.current, {
             opacity: 0,
           })
+
           .from(container.current, {
             transform: "scaleX(0.7) scaleY(0) translateY(80%)",
             borderRadius: "100px",
@@ -44,6 +44,12 @@ function LandingPage() {
             opacity: 0,
             duration: 0.7,
             stagger: 0.7,
+          })
+
+          .from("#MM", {
+            opacity: 0,
+            duration: 0.9,
+            stagger: 0.9,
           });
       }
     },
@@ -53,8 +59,8 @@ function LandingPage() {
   );
 
   return (
-    <div ref={container}>
-      <div className="min-h-screen bg-black">
+    <div id="landingPage" ref={container}>
+      <div className="min-h-screen bg-black ">
         <Navbar />
 
         <div className=" flex items-center justify-center pb-5">
@@ -69,6 +75,7 @@ function LandingPage() {
           </div>
 
           <Image
+            id="MM"
             src="MM Homepage element.svg"
             alt="Product preview"
             width={500}
