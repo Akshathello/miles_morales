@@ -93,7 +93,7 @@ function Preload({ children }: PreloadProps) {
     <div>
       {loading ? (
         <>
-          <div className="flex absolute text-[10rem] stroke-transparent font-serif -z-10 leading-none justify-center items-center">
+          <div className="flex absolute text-[10rem] stroke-transparent font-serif leading-none mt-24 ml-10 italic hover:not-italic hover:duration-300">
             {" "}
             Embarking on <br></br> a Creative <br /> Journey.
           </div>
