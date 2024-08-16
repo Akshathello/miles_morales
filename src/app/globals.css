@@ -69,6 +69,12 @@
     /* background-color: white; */
   }
 
+  .serif-stroke{
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-fill-color: transparent;
+  }
+
+
 
 
 }

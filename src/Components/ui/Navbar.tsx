@@ -3,45 +3,14 @@
 import React, { useRef } from "react";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import Link from "next/link";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
-// gsap.registerPlugin(useGSAP);
+interface NavbarProps {
+  className?: string;
+}
 
-function Navbar() {
-  const container = useRef<HTMLDivElement>(null);
-  const tl = useRef<gsap.core.Timeline | null>(null);
-
-  // useGSAP(
-  //   () => {
-  //     if (container.current) {
-  //       tl.current = gsap.timeline();
-
-  //       tl.current
-  //         .from(container.current, {
-  //           opacity: 0,
-  //           duration: 0.3,
-  //           delay: 0.2,
-  //         })
-  //         .from(container.current, {
-  //           transform: "scaleX(0.7) scaleY(0) translateY(80%)",
-  //           borderRadius: "100px",
-  //           duration: 2,
-  //           ease: "expo.out",
-  //         });
-
-  //       // .from("#nav", {
-  //       //   opacity: 0,
-  //       // });
-  //     }
-  //   },
-  //   {
-  //     scope: container,
-  //   }
-  // );
-
+const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
-    <nav id="nav" className="sticky h-16 top-0 inset-x-0 z-10 bg-black">
+    <nav id="nav" className="h-16 inset-x-0 bg-black">
       <MaxWidthWrapper>
         <div className=" flex h-16 items-center justify-between border-b border-zinc-200">
           <Link
@@ -99,6 +68,6 @@ function Navbar() {
       </MaxWidthWrapper>
     </nav>
   );
-}
+};
 
 export default Navbar;

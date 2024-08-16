@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -17,6 +17,7 @@ const config = {
         "2xl": "1400px",
       },
     },
+
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -53,6 +54,17 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      // fontfamily: {
+      //   serif: ['"proxima Nova"'],
+      // },
+
+      textStroke: {
+        "serif-stroke": {
+          "-webkit-text-stroke-width": "2px",
+          "-webkit-text-fill-color": "transparent",
+        },
+      },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -67,14 +79,19 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        // ping: {
+        //   "0%": { transform: "scale(1)", opacity: "1" },
+        //   "75%, 75%": { transform: "scale(2)", opacity: "0" },
+        // },
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
+      // animation: {
+      //   "accordion-down": "accordion-down 0.2s ease-out",
+      //   "accordion-up": "accordion-up 0.2s ease-out",
+      //   ping: "ping 2s cubic-bezier(.59,-0.44,.92,.1) infinite",
+      // },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

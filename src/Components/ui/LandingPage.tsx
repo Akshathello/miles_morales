@@ -56,7 +56,7 @@ function LandingPage() {
   return (
     <div id="landingPage" ref={container} className="overflow-hidden">
       <div className="min-h-screen bg-black">
-        <Navbar />
+        <Navbar className="sticky top-0 z-50" />
 
         <div className=" flex items-center justify-center pb-5">
           <div

@@ -55,10 +55,9 @@ function Preload({ children }: PreloadProps) {
 
         if (newValue >= 80) {
           newValue = prevValue + Math.floor(Math.random() * 1) + 1;
-
           interval = setInterval(
             updateCounter,
-            Math.floor(Math.random() * 100) + 50
+            Math.floor(Math.random() * 90) + 50
           );
         }
 
@@ -93,16 +92,34 @@ function Preload({ children }: PreloadProps) {
     <div>
       {loading ? (
         <>
-          <div className="flex absolute text-[10rem] stroke-transparent font-serif leading-none mt-24 ml-10 italic hover:not-italic hover:duration-300">
+          <span
+            style={{}}
+            className="flex absolute text-[10rem] font-serif leading-none mt-24 ml-10 italic serif-stroke"
+          >
             {" "}
             Embarking on <br></br> a Creative <br /> Journey.
-          </div>
+          </span>
+          <span
+            style={{}}
+            className="flex absolute text-[10rem] font-serif leading-none animate-[ping_1s_ease-in_infinite] mt-24 ml-10 italic serif-stroke"
+          >
+            {" "}
+            Embarking on <br></br> a Creative <br /> Journey.
+          </span>
+          <span
+            style={{}}
+            className="flex absolute text-[10rem] font-serif leading-none mt-24 ml-10 animate-[ping_1s_ease-in_infinite] italic serif-stroke"
+          >
+            {" "}
+            Embarking on <br></br> a Creative <br /> Journey.
+          </span>
+
           <div
             ref={container}
             id="LoadingAnimation"
             className="overflow-hidden min-h-screen"
           >
-            <div className="counter font-mono text-[15rem] font-extrabold min-h-screen bg-black text-white justify-end items-end flex p-14">
+            <div className="counter font-mono text-[15rem] font-extrabold min-h-screen bg-black text-white justify-end items-end flex p-14 serif-stroke">
               {" "}
               {currentValue}
             </div>
