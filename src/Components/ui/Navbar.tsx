@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
           <Link
             href="/sign-up"
-            className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200 text-white font-semibold p-1 rounded-lg px-3 font-serif "
+            className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200 text-white font-semibold p-1 rounded-lg px-3 font-serif hover:text-transparent "
           >
             Get Started
           </Link>

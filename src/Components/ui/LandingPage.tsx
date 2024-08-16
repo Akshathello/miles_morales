@@ -2,15 +2,17 @@
 
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Navbar from "./Navbar";
+import MovingAnimation from "./MovingAnimation";
 
 gsap.registerPlugin(useGSAP);
 
 function LandingPage() {
   const container = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
+  const [isAnimationstopped, setIsAnimationStopped] = useState(false);
 
   useGSAP(
     () => {
@@ -23,7 +25,9 @@ function LandingPage() {
           })
 
           .from(container.current, {
-            transform: "scaleX(0.5) scaleY(0) translateY(80%)",
+            x: "740px",
+            y: "325px",
+            transform: "scaleX(0) scaleY(0) translateX(100%)",
             duration: 2,
             ease: "ease.out",
             borderRadius: "100px",
@@ -53,34 +57,68 @@ function LandingPage() {
     }
   );
 
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            timeoutId = setTimeout(() => setIsAnimationStopped(true));
+          } else {
+            clearTimeout(timeoutId);
+            setIsAnimationStopped(false);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 1.0,
+      }
+    );
+
+    if (container.current) {
+      observer.observe(container.current);
+    }
+
+    return () => {
+      if (container.current) {
+        observer.unobserve(container.current);
+      }
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
-    <div id="landingPage" ref={container} className="overflow-hidden">
-      <div className="min-h-screen bg-black">
-        <Navbar className="sticky top-0 z-50" />
+    <>
+      {!isAnimationstopped && <MovingAnimation />}
+      <div id="landingPage" ref={container} className="overflow-hidden">
+        <div className="min-h-screen bg-black">
+          <Navbar className="sticky top-0 z-50" />
 
-        <div className=" flex items-center justify-center pb-5">
-          <div
-            id="Writeup"
-            className="bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text"
-          >
-            <div className="font-serif text-[10rem] leading-none hover:text-orange-500 duration-300 text-center">
-              {" "}
-              Miles <br></br> Morales
+          <div className=" flex items-center justify-center pb-5">
+            <div
+              id="Writeup"
+              className="bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text"
+            >
+              <div className="font-serif text-[10rem] leading-none hover:text-orange-500 duration-300 text-center">
+                {" "}
+                Miles <br></br> Morales
+              </div>
             </div>
-          </div>
 
-          <Image
-            id="MM"
-            src="MM Homepage element.svg"
-            alt="Product preview"
-            width={500}
-            height={500}
-            quality={100}
-            style={{ objectFit: "fill" }}
-          />
+            <Image
+              id="MM"
+              src="MM Homepage element.svg"
+              alt="Product preview"
+              width={500}
+              height={500}
+              quality={100}
+              style={{ objectFit: "fill" }}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

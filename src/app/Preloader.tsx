@@ -3,6 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import React, { Children, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import MovingAnimation from "@/Components/ui/MovingAnimation";
 
 gsap.registerPlugin(useGSAP);
 
@@ -21,18 +22,17 @@ function Preload({ children }: PreloadProps) {
 
         tl.current
 
-          .from(container.current, {
+          .to(container.current, {
             opacity: 1,
-            duration: 0.6,
-            delay: 0.2,
-            stagger: 0.6,
           })
 
-          .from(container.current, {
-            transform: "scaleX(0.5) scaleY(0) translateX(50%)",
+          .to(container.current, {
+            x: "740px",
+            y: "325px",
+            transform: "scaleX(0) scaleY(0) translateX(100%)",
             borderRadius: "100px",
-            duration: 3,
-            ease: "expo.out",
+            duration: 2,
+            ease: "power2.in",
           });
       }
     },
@@ -51,13 +51,13 @@ function Preload({ children }: PreloadProps) {
 
     function updateCounter() {
       setCurrentValue((prevValue) => {
-        let newValue = prevValue + Math.floor(Math.random() * 6) + 1;
+        let newValue = prevValue + Math.floor(Math.random() * 10) + 1;
 
         if (newValue >= 80) {
           newValue = prevValue + Math.floor(Math.random() * 1) + 1;
           interval = setInterval(
             updateCounter,
-            Math.floor(Math.random() * 90) + 50
+            Math.floor(Math.random() * 3000) + 500
           );
         }
 
@@ -74,7 +74,7 @@ function Preload({ children }: PreloadProps) {
         }
 
         if (counterElement) {
-          counterElement.textContent = newValue.toString();
+          counterElement.textContent = `${newValue}%`;
         }
 
         return newValue;
@@ -92,36 +92,18 @@ function Preload({ children }: PreloadProps) {
     <div>
       {loading ? (
         <>
-          <span
-            style={{}}
-            className="flex absolute text-[10rem] font-serif leading-none mt-24 ml-10 italic serif-stroke"
-          >
-            {" "}
-            Embarking on <br></br> a Creative <br /> Journey.
-          </span>
-          <span
-            style={{}}
-            className="flex absolute text-[10rem] font-serif leading-none animate-[ping_1s_ease-in_infinite] mt-24 ml-10 italic serif-stroke"
-          >
-            {" "}
-            Embarking on <br></br> a Creative <br /> Journey.
-          </span>
-          <span
-            style={{}}
-            className="flex absolute text-[10rem] font-serif leading-none mt-24 ml-10 animate-[ping_1s_ease-in_infinite] italic serif-stroke"
-          >
-            {" "}
-            Embarking on <br></br> a Creative <br /> Journey.
-          </span>
+          <div className="overflow-hidden">
+            <MovingAnimation />
 
-          <div
-            ref={container}
-            id="LoadingAnimation"
-            className="overflow-hidden min-h-screen"
-          >
-            <div className="counter font-mono text-[15rem] font-extrabold min-h-screen bg-black text-white justify-end items-end flex p-14 serif-stroke">
-              {" "}
-              {currentValue}
+            <div
+              ref={container}
+              id="LoadingAnimation"
+              className="overflow-hidden min-h-screen"
+            >
+              <div className="counter font-mono text-[15rem] font-extrabold min-h-screen bg-black text-white justify-end items-end flex p-14 serif-stroke">
+                {""}
+                {`${currentValue}%`}
+              </div>
             </div>
           </div>
         </>
