@@ -57,40 +57,9 @@ function LandingPage() {
     }
   );
 
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            timeoutId = setTimeout(() => setIsAnimationStopped(true));
-          } else {
-            clearTimeout(timeoutId);
-            setIsAnimationStopped(false);
-          }
-        });
-      },
-      {
-        root: null,
-        threshold: 1.0,
-      }
-    );
-
-    if (container.current) {
-      observer.observe(container.current);
-    }
-
-    return () => {
-      if (container.current) {
-        observer.unobserve(container.current);
-      }
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
   return (
     <>
-      {!isAnimationstopped && <MovingAnimation />}
+      <MovingAnimation className="overflow-hidden" />
       <div id="landingPage" ref={container} className="overflow-hidden">
         <div className="min-h-screen bg-black">
           <Navbar className="sticky top-0 z-50" />

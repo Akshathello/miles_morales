@@ -100,7 +100,7 @@ function Preload({ children }: PreloadProps) {
               id="LoadingAnimation"
               className="overflow-hidden min-h-screen"
             >
-              <div className="counter font-mono text-[15rem] font-extrabold min-h-screen bg-black text-white justify-end items-end flex p-14 serif-stroke">
+              <div className="counter font-mono text-[15rem] font-extrabold min-h-screen bg-black text-white justify-end items-end flex p-11 serif-stroke">
                 {""}
                 {`${currentValue}%`}
               </div>
