@@ -83,11 +83,16 @@ const config = {
           "0%": { transform: "scale(1)", opacity: "1" },
           "75%, 75%": { transform: "scale(1.3)", opacity: "0" },
         },
+        pingScale: {
+          "0%": { transform: "scale(1)", opacity: "1" },
+          "90%": { transform: "Scale(1.5)", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         ping: "ping 2s cubic-bezier(.37,-0.93,.85,0) infinite",
+        pingScale: "pingScale 3s cubic-bezier(.06,-1.27,.82,-0.96) infinite",
       },
     },
   },
