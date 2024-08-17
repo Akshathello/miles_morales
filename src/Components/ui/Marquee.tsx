@@ -4,12 +4,7 @@ import { StarIcon } from "lucide-react";
 function Marquee() {
   return (
     <div className="bg-black">
-      <div
-        data-scroll
-        data-scroll-section
-        data-scroll-speed=".1"
-        className="flex py-8 rounded-tl-3xl rounded-tr-3xl h-[50vh] bg-gradient-to-r from-orange-500 to bg-purple-600 overflow-hidden"
-      >
+      <div className="flex py-8 rounded-tl-3xl rounded-tr-3xl h-[50vh] bg-gradient-to-r from-orange-500 to bg-purple-600 overflow-hidden">
         <div className=" text border-t-2 border-b-2 border-black flex whitespace-nowrap mt-3 ">
           <motion.div
             initial={{ x: 0 }}

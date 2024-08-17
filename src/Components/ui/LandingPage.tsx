@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Navbar from "./Navbar";
 import MovingAnimation from "./MovingAnimation";
-import ButtonAnimate from "./ButtonAnimate";
+import Marquee from "./Marquee";
 
 gsap.registerPlugin(useGSAP);
 
@@ -34,22 +34,16 @@ function LandingPage() {
             borderRadius: "100px",
           })
 
-          .from("#nav", {
-            opacity: 0,
-            duration: 0.2,
-            stagger: 0.3,
-          })
-
           .from("#Writeup", {
             opacity: 0,
-            duration: 0.7,
-            stagger: 0.7,
+            duration: 0.4,
+            stagger: 0.4,
           })
 
           .from("#MM", {
             opacity: 0,
-            duration: 0.9,
-            stagger: 0.9,
+            duration: 0.8,
+            stagger: 0.8,
           });
       }
     },
@@ -61,10 +55,9 @@ function LandingPage() {
   return (
     <>
       <MovingAnimation />
-      <div id="landingPage" ref={container} className="overflow-hidden">
-        <div className="min-h-screen bg-black">
-          <Navbar></Navbar>
 
+      <div id="landingPage" ref={container} className="overflow-hidden">
+        <div className="min-h-screen bg-black pt-11">
           <div className=" flex items-center justify-center pb-5">
             <div
               id="Writeup"

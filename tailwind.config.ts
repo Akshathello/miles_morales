@@ -87,12 +87,17 @@ const config = {
           "0%": { transform: "scale(1)", opacity: "1" },
           "90%": { transform: "Scale(1.5)", opacity: "0" },
         },
+        pingScale1: {
+          "0%": { transform: "scale(1)", opacity: "1" },
+          "100%": { transform: "Scale(1.85)", opacity: "0.5" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         ping: "ping 2s cubic-bezier(.37,-0.93,.85,0) infinite",
         pingScale: "pingScale 3s cubic-bezier(.06,-1.27,.82,-0.96) infinite",
+        pingScale1: "pingScale 2s cubic-bezier(.37,-0.93,.85,0) infinite",
       },
     },
   },

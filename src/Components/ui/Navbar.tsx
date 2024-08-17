@@ -3,20 +3,19 @@
 import React, { useRef } from "react";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import Link from "next/link";
-import { Button } from "./button";
 import ButtonAnimate from "./ButtonAnimate";
 
 interface NavbarProps {
   className?: string;
+  id?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ className }) => {
+const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
   return (
     <>
-      <div></div>
-      <nav id="nav" className="h-16 inset-x-0 bg-black">
+      <nav id="nav" className=" h-16 inset-x-0 bg-black/40 backdrop-blur-lg">
         <MaxWidthWrapper>
-          <div className=" flex h-16 items-center justify-between border-b border-zinc-200">
+          <div className=" flex h-16 items-center justify-between border-b border-zinc-200 ">
             <Link
               href="/"
               className="flex text-white z-40 font-semibold hover:text-orange-500 font-serif"
