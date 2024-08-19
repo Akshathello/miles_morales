@@ -13,7 +13,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
   return (
     <>
-      <nav id="nav" className=" h-16 inset-x-0 bg-black/40 backdrop-blur-lg">
+      <nav id="nav" className=" h-16 inset-x-0 bg-black/10 backdrop-blur-lg">
         <MaxWidthWrapper>
           <div className=" flex h-16 items-center justify-between border-b border-zinc-200 ">
             <Link

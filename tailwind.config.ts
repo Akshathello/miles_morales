@@ -54,16 +54,13 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      // fontfamily: {
-      //   serif: ['"proxima Nova"'],
-      // },
 
-      textStroke: {
-        "serif-stroke": {
-          "-webkit-text-stroke-width": "2px",
-          "-webkit-text-fill-color": "transparent",
-        },
-      },
+      // textStroke: {
+      //   "serif-stroke": {
+      //     "-webkit-text-stroke-width": "2px",
+      //     "-webkit-text-fill-color": "transparent",
+      //   },
+      // },
 
       borderRadius: {
         lg: "var(--radius)",
@@ -89,7 +86,20 @@ const config = {
         },
         pingScale1: {
           "0%": { transform: "scale(1)", opacity: "1" },
-          "100%": { transform: "Scale(1.85)", opacity: "0.5" },
+          "100%": { transform: "scale(1.35)", opacity: "0", x: "500px" },
+        },
+        pulse1: {
+          "0%": { opacity: "0" },
+          "50%": { opacity: "0.5" },
+          "100%": { opacity: "0" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeIn2: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       animation: {
@@ -98,6 +108,9 @@ const config = {
         ping: "ping 2s cubic-bezier(.37,-0.93,.85,0) infinite",
         pingScale: "pingScale 3s cubic-bezier(.06,-1.27,.82,-0.96) infinite",
         pingScale1: "pingScale 2s cubic-bezier(.37,-0.93,.85,0) infinite",
+        pulse1: "pulse 3s cubic-bezier(.79,.13,.87,.26) infinite",
+        fadeIn: " fadeIn 2s ease-in-out forwards ",
+        fadeIn2: " fadeIn 2s ease-in-out forwards ",
       },
     },
   },

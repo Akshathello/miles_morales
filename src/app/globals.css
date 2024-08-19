@@ -66,11 +66,11 @@
   body {
     @apply bg-background text-foreground;
     /* background-color: #030712 */
-    /* background-color: white; */
+    background-color: #FFF8DC	;
   }
 
   .serif-stroke{
-    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-width: 3px;
     -webkit-text-fill-color: transparent;
   }
 

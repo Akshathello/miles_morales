@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <>
-      <div ref={container} className="h-5 bg-black sticky top-0 z-50">
+      <div ref={container} className=" h-5 bg-black sticky top-0 z-50">
         <div className="bg-black/0 backdrop-blur-lg">
           <Navbar />
         </div>
