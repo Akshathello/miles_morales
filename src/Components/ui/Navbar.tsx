@@ -6,11 +6,15 @@ import Link from "next/link";
 import ButtonAnimate from "./ButtonAnimate";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { color, easeInOut, motion } from "framer-motion";
 
 interface NavbarProps {
   className?: string;
   id?: string;
 }
+
+const DURATION1 = 0.5;
+const STAGGER1 = 0.04;
 
 const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
   // gsap.registerPlugin(useGSAP);
@@ -79,6 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
 
   const btnRef = useRef<HTMLDivElement>(null);
   const spanRef = useRef<HTMLDivElement>(null);
+  const anchorRef = useRef<HTMLAnchorElement>(null);
 
   let inactivityTimeout: NodeJS.Timeout;
 
@@ -99,6 +104,13 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
         opacity: 1,
         ease: "power2.out",
       });
+      gsap.to(anchorRef.current, {
+        duration: 0.5,
+        xPercent: -50, // Keeps the center alignment
+        left,
+        opacity: 1,
+        ease: "power4.out",
+      });
     };
 
     const handleMouseLeave = (e: MouseEvent) => {
@@ -118,6 +130,13 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
           ease: "power2.out",
         });
       }, 300);
+
+      gsap.to(anchorRef.current, {
+        duration: 0.9,
+        xPercent: "", // Keeps the center alignment
+        left,
+        ease: "power4.out",
+      });
     };
 
     btnRef.current?.addEventListener("mousemove", handleMouseMove);
@@ -129,6 +148,32 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
       btnRef.current?.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
+
+  const word = "Miles Morales";
+  const letterVariants = {
+    initial: { opacity: 1, color: "#ffffff" },
+    hover: { opacity: 0.3, color: "#f97316" },
+  };
+
+  const splitLetters = word.split("").map((letter, index) => {
+    return (
+      <motion.span
+        key={index}
+        variants={letterVariants}
+        // initial="initial"
+        // whileHover="hover"
+        transition={{
+          duration: DURATION1,
+          delay: index * STAGGER1,
+          ease: "easeOut",
+          repeat: 4,
+        }}
+        className="text-white font-semibold z-40 font-serif pointer-events-none mix-blend-difference"
+      >
+        {letter}
+      </motion.span>
+    );
+  });
 
   return (
     <>
@@ -142,15 +187,23 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
             >
               <div
                 ref={spanRef}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-orange-500 opacity-0"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
               />
-              <Link
-                id="text"
-                href="/"
-                className=" flex text-white z-40 font-semibold hover:text-orange-500 font-serif pointer-events-none mix-blend-difference"
+
+              <motion.div
+                className="relative inline-block cursor-pointer"
+                whileHover="hover"
+                initial="initial"
               >
-                <span>Miles Morales</span>
-              </Link>
+                <Link
+                  // ref={anchorRef}
+                  id="text"
+                  href="/"
+                  className="relative inline-block cursor-pointer"
+                >
+                  <span>{splitLetters}</span>
+                </Link>
+              </motion.div>
             </div>
 
             <div className=" text-white hidden items-center space-x-4 sm:flex gap-3 font-serif ">

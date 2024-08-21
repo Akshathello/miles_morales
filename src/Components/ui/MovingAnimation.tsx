@@ -74,6 +74,7 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
   ));
 
   const word1 = "Embarking";
+
   const letterVariants1 = {
     hidden: { x: "800%" },
     visible: { x: "0%" },
