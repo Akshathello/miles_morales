@@ -17,72 +17,12 @@ const DURATION1 = 0.5;
 const STAGGER1 = 0.04;
 
 const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
-  // gsap.registerPlugin(useGSAP);
-
-  // const magnetoRef = useRef<HTMLDivElement | null>(null);
-  // const magnetoTextRef = useRef<HTMLDivElement | null>(null);
-
-  // const dbgrRef = useRef<HTMLDivElement | null>(null);
-
-  // const [cursorX, setCursorX] = useState<number>(0);
-  // const [debugInfo, SetDebugInfo] = useState({
-  //   cursorX: 0,
-  //   boxLeft: 0,
-  //   cursorInsideButton: 0,
-  //   relativeToTotalWidth: 0,
-  //   shifted: 0,
-  // });
-
-  // //The effect while the pointer is within the subject
-
-  // useEffect(() => {
-  //   const magneto = magnetoRef.current;
-  //   const dbgr = dbgrRef.current;
-
-  //   const activateMagneto = (event: MouseEvent) => {
-  //     if (!magneto || !dbgr) return;
-
-  //     const boundBox = magneto.getBoundingClientRect();
-  //     const magnetoStrength = 40;
-  //     const magnetoTextStrength = 80;
-
-  //     // const cursorX = event.clientX;
-
-  //     // setCursorX(event.clientX);
-
-  //     const boxLeft = Math.ceil(boundBox.left);
-  //     const cursorInsideButton = Math.ceil(cursorX - boxLeft);
-  //     const relativeToTotalWidth = (
-  //       (cursorX - boxLeft) /
-  //       magneto.offsetWidth
-  //     ).toFixed(2);
-  //     const shifted = ((cursorX - boxLeft) / magneto.offsetWidth - 0.5).toFixed(
-  //       2
-  //     );
-  //     console.log(cursorX);
-
-  //     SetDebugInfo({
-  //       cursorX: event.clientX,
-  //       boxLeft: Math.ceil(boundBox.left),
-  //       cursorInsideButton: Math.ceil(cursorX - boxLeft),
-  //       relativeToTotalWidth: parseFloat(relativeToTotalWidth),
-  //       shifted: parseFloat(shifted),
-  //     });
-  //   };
-
-  //   //the effect while the pointer is out of the subject
-
-  //   const resetMagneto = (event: MouseEvent) => {};
-
-  //   //add event listeners
-
-  //   magneto!.addEventListener("mousemove", activateMagneto);
-  //   magneto!.addEventListener("mouseleave", resetMagneto);
-  //   console.log(activateMagneto);
-  // }, []);
-
   const btnRef = useRef<HTMLDivElement>(null);
+  const btnRef1 = useRef<HTMLDivElement>(null);
+  const btnRef2 = useRef<HTMLDivElement>(null);
   const spanRef = useRef<HTMLDivElement>(null);
+  const spanRef1 = useRef<HTMLDivElement>(null);
+  const spanRef2 = useRef<HTMLDivElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
 
   let inactivityTimeout: NodeJS.Timeout;
@@ -104,6 +44,33 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
         opacity: 1,
         ease: "power2.out",
       });
+
+      gsap.to(anchorRef.current, {
+        duration: 0.5,
+        xPercent: -50, // Keeps the center alignment
+        left,
+        opacity: 1,
+        ease: "power4.out",
+      });
+    };
+
+    const handleMouseMove2 = (e: MouseEvent) => {
+      clearTimeout(inactivityTimeout);
+      const target = e.target as HTMLElement;
+
+      const { width } = target?.getBoundingClientRect();
+      const offset = e.offsetX;
+
+      const left = `${(offset / width) * 100}%`;
+
+      gsap.to(spanRef2.current, {
+        duration: 0.5,
+        xPercent: -50, // Keeps the center alignment
+        left,
+        opacity: 1,
+        ease: "power2.out",
+      });
+
       gsap.to(anchorRef.current, {
         duration: 0.5,
         xPercent: -50, // Keeps the center alignment
@@ -139,13 +106,169 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
       });
     };
 
+    const handleMouseLeave2 = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+
+      const { width } = target?.getBoundingClientRect();
+      const offset = e.offsetX;
+
+      const left = `${(offset / width) * 100}%`;
+
+      inactivityTimeout = setTimeout(() => {
+        gsap.to(spanRef2.current, {
+          duration: 0.9,
+          xPercent: -50, // Keeps the center alignment
+          left: "50%",
+          opacity: 0,
+          ease: "power2.out",
+        });
+      }, 300);
+
+      gsap.to(anchorRef.current, {
+        duration: 0.9,
+        xPercent: "", // Keeps the center alignment
+        left,
+        ease: "power4.out",
+      });
+    };
+
     btnRef.current?.addEventListener("mousemove", handleMouseMove);
     btnRef.current?.addEventListener("mouseleave", handleMouseLeave);
+    btnRef2.current?.addEventListener("mousemove", handleMouseMove2);
+    btnRef2.current?.addEventListener("mouseleave", handleMouseLeave2);
 
     return () => {
       clearTimeout(inactivityTimeout);
       btnRef.current?.removeEventListener("mousemove", handleMouseMove);
       btnRef.current?.removeEventListener("mouseleave", handleMouseLeave);
+      btnRef2.current?.removeEventListener("mousemove", handleMouseMove2);
+      btnRef2.current?.removeEventListener("mouseleave", handleMouseLeave2);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove1 = (e: MouseEvent) => {
+      clearTimeout(inactivityTimeout);
+      const target = e.target as HTMLElement;
+
+      const { width } = target?.getBoundingClientRect();
+      const offset = e.offsetX;
+
+      const left = `${(offset / width) * 100}%`;
+
+      gsap.to(spanRef1.current, {
+        duration: 0.5,
+        xPercent: -50, // Keeps the center alignment
+        left,
+        opacity: 1,
+        ease: "power2.out",
+      });
+
+      gsap.to(anchorRef.current, {
+        duration: 0.5,
+        xPercent: -50, // Keeps the center alignment
+        left,
+        opacity: 1,
+        ease: "power4.out",
+      });
+    };
+
+    const handleMouseLeave1 = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+
+      const { width } = target?.getBoundingClientRect();
+      const offset = e.offsetX;
+
+      const left = `${(offset / width) * 100}%`;
+
+      inactivityTimeout = setTimeout(() => {
+        gsap.to(spanRef1.current, {
+          duration: 0.9,
+          xPercent: -50, // Keeps the center alignment
+          left: "50%",
+          opacity: 0,
+          ease: "power2.out",
+        });
+      }, 300);
+
+      gsap.to(anchorRef.current, {
+        duration: 0.9,
+        xPercent: "", // Keeps the center alignment
+        left,
+        ease: "power4.out",
+      });
+    };
+
+    btnRef1.current?.addEventListener("mousemove", handleMouseMove1);
+    btnRef1.current?.addEventListener("mouseleave", handleMouseLeave1);
+
+    return () => {
+      clearTimeout(inactivityTimeout);
+      btnRef1.current?.removeEventListener("mousemove", handleMouseMove1);
+      btnRef1.current?.removeEventListener("mouseleave", handleMouseLeave1);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove2 = (e: MouseEvent) => {
+      clearTimeout(inactivityTimeout);
+      const target = e.target as HTMLElement;
+
+      const { width } = target?.getBoundingClientRect();
+      const offset = e.offsetX;
+
+      const left = `${(offset / width) * 100}%`;
+
+      gsap.to(spanRef2.current, {
+        duration: 0.5,
+        xPercent: -50, // Keeps the center alignment
+        left,
+        opacity: 1,
+        ease: "power2.out",
+      });
+
+      gsap.to(anchorRef.current, {
+        duration: 0.5,
+        xPercent: -50, // Keeps the center alignment
+        left,
+        opacity: 1,
+        ease: "power4.out",
+      });
+    };
+
+    const handleMouseLeave2 = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+
+      const { width } = target?.getBoundingClientRect();
+      const offset = e.offsetX;
+
+      const left = `${(offset / width) * 100}%`;
+
+      inactivityTimeout = setTimeout(() => {
+        gsap.to(spanRef2.current, {
+          duration: 0.9,
+          xPercent: -50, // Keeps the center alignment
+          left: "50%",
+          opacity: 0,
+          ease: "power2.out",
+        });
+      }, 300);
+
+      gsap.to(anchorRef.current, {
+        duration: 0.9,
+        xPercent: "", // Keeps the center alignment
+        left,
+        ease: "power4.out",
+      });
+    };
+
+    btnRef2.current?.addEventListener("mousemove", handleMouseMove2);
+    btnRef2.current?.addEventListener("mouseleave", handleMouseLeave2);
+
+    return () => {
+      clearTimeout(inactivityTimeout);
+      btnRef2.current?.removeEventListener("mousemove", handleMouseMove2);
+      btnRef2.current?.removeEventListener("mouseleave", handleMouseLeave2);
     };
   }, []);
 
@@ -160,8 +283,6 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
       <motion.span
         key={index}
         variants={letterVariants}
-        // initial="initial"
-        // whileHover="hover"
         transition={{
           duration: DURATION1,
           delay: index * STAGGER1,
@@ -175,11 +296,155 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
     );
   });
 
+  const word1 = "Web Studio";
+  const letterVariants1 = {
+    initial: { opacity: 1, color: "#ffffff" },
+    hover: { opacity: 0.3, color: "#f97316" },
+  };
+
+  const splitLetters1 = word1.split("").map((letter, index) => {
+    return (
+      <motion.span
+        key={index}
+        variants={letterVariants1}
+        transition={{
+          duration: DURATION1,
+          delay: index * STAGGER1,
+          ease: "easeOut",
+          repeat: 4,
+        }}
+        className="text-white font-serif pointer-events-none mix-blend-difference"
+      >
+        {letter}
+      </motion.span>
+    );
+  });
+
+  const word2 = "Vision Studio";
+  const letterVariants2 = {
+    initial: { opacity: 1, color: "#ffffff" },
+    hover: { opacity: 0.3, color: "#f97316" },
+  };
+
+  const splitLetters2 = word2.split("").map((letter, index) => {
+    return (
+      <motion.span
+        key={index}
+        variants={letterVariants2}
+        transition={{
+          duration: DURATION1,
+          delay: index * STAGGER1,
+          ease: "easeOut",
+          repeat: 4,
+        }}
+        className="text-white font-serif pointer-events-none mix-blend-difference"
+      >
+        {letter}
+      </motion.span>
+    );
+  });
+
+  const word3 = "Design Studio";
+  const letterVariants3 = {
+    initial: { opacity: 1, color: "#ffffff" },
+    hover: { opacity: 0.3, color: "#f97316" },
+  };
+
+  const splitLetters3 = word3.split("").map((letter, index) => {
+    return (
+      <motion.span
+        key={index}
+        variants={letterVariants3}
+        transition={{
+          duration: DURATION1,
+          delay: index * STAGGER1,
+          ease: "easeOut",
+          repeat: 4,
+        }}
+        className="text-white font-serif pointer-events-none mix-blend-difference"
+      >
+        {letter}
+      </motion.span>
+    );
+  });
+
+  const word4 = "Catalyst";
+  const letterVariants4 = {
+    initial: { opacity: 1, color: "#ffffff" },
+    hover: { opacity: 0.3, color: "#f97316" },
+  };
+
+  const splitLetters4 = word4.split("").map((letter, index) => {
+    return (
+      <motion.span
+        key={index}
+        variants={letterVariants4}
+        transition={{
+          duration: DURATION1,
+          delay: index * STAGGER1,
+          ease: "easeOut",
+          repeat: 4,
+        }}
+        className="text-white font-serif pointer-events-none mix-blend-difference"
+      >
+        {letter}
+      </motion.span>
+    );
+  });
+
+  const word5 = "Sign In";
+  const letterVariants5 = {
+    initial: { opacity: 1, color: "#ffffff" },
+    hover: { opacity: 0.3, color: "#f97316" },
+  };
+
+  const splitLetters5 = word5.split("").map((letter, index) => {
+    return (
+      <motion.span
+        key={index}
+        variants={letterVariants5}
+        transition={{
+          duration: DURATION1,
+          delay: index * STAGGER1,
+          ease: "easeOut",
+          repeat: 4,
+        }}
+        className="text-white font-serif pointer-events-none mix-blend-difference"
+      >
+        {letter}
+      </motion.span>
+    );
+  });
+
+  const word6 = "Get Started";
+  const letterVariants6 = {
+    initial: { opacity: 1, color: "#ffffff" },
+    hover: { opacity: 0.3, color: "#f97316" },
+  };
+
+  const splitLetters6 = word6.split("").map((letter, index) => {
+    return (
+      <motion.span
+        key={index}
+        variants={letterVariants6}
+        transition={{
+          duration: DURATION1,
+          delay: index * STAGGER1,
+          ease: "easeOut",
+          repeat: 4,
+          border: "",
+        }}
+        className="text-white font-semibold border-white rounded-lg font-serif pointer-events-none mix-blend-difference"
+      >
+        {letter}
+      </motion.span>
+    );
+  });
   return (
     <>
       <nav id="nav" className=" h-16 inset-x-0 bg-black/10 backdrop-blur-lg">
         <MaxWidthWrapper>
-          <div className=" flex h-16 items-center justify-between border-b border-zinc-200 ">
+          <div className=" flex h-16 items-center justify-between border-b border-zinc-200">
             <div
               ref={btnRef}
               id="magneto"
@@ -189,14 +454,12 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
                 ref={spanRef}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
               />
-
               <motion.div
                 className="relative inline-block cursor-pointer"
                 whileHover="hover"
                 initial="initial"
               >
                 <Link
-                  // ref={anchorRef}
                   id="text"
                   href="/"
                   className="relative inline-block cursor-pointer"
@@ -206,55 +469,109 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
               </motion.div>
             </div>
 
-            <div className=" text-white hidden items-center space-x-4 sm:flex gap-3 font-serif ">
-              <Link
-                href="/Web Studio"
-                className="text-white hover:text-orange-500"
+            <div className=" text-white flex gap-3 font-serif relative justify-center items-center">
+              <div
+                ref={btnRef1}
+                id="magneto"
+                className="relative flex space-x-9 whitespace-nowrap p-3 items-center cursor-pointer"
               >
-                {" "}
-                Web Studio
-              </Link>
+                <div
+                  ref={spanRef1}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
+                />
+                <motion.div
+                  className="relative"
+                  whileHover="hover"
+                  initial="initial"
+                >
+                  <Link
+                    href="/Web Studio"
+                    className="text-white pointer-events-none mix-blend-difference"
+                  >
+                    {splitLetters1}
+                  </Link>
+                </motion.div>
 
-              <Link
-                href="/Vision Studio"
-                className="text-white hover:text-orange-500"
-              >
-                {" "}
-                Vision Studio
-              </Link>
+                <motion.div
+                  className="relative "
+                  whileHover="hover"
+                  initial="initial"
+                >
+                  <Link
+                    href="/Vision Studio"
+                    className="text-white hover:text-orange-500"
+                  >
+                    {splitLetters2}
+                  </Link>
+                </motion.div>
 
-              <ButtonAnimate id="Animate"></ButtonAnimate>
+                {/* <motion.div
+                  className="relative inline-block cursor-pointer "
+                  whileHover="hover"
+                  initial="initial"
+                > */}
+                <ButtonAnimate id="Animate"></ButtonAnimate>
+                {/* </motion.div> */}
 
-              <Link
-                href="/Design Studio"
-                className="text-white hover:text-orange-500"
-              >
-                {" "}
-                Design Studio
-              </Link>
+                {/* <motion.div
+                  className="relative inline-block cursor-pointer "
+                  whileHover="hover"
+                  initial="initial"
+                > */}
+                <Link
+                  href="/Design Studio"
+                  className="text-white hover:text-orange-500"
+                >
+                  {splitLetters3}
+                </Link>
+                {/* </motion.div> */}
 
-              <Link
-                href="/Catlyst Studio"
-                className="text-white hover:text-orange-500"
-              >
-                {" "}
-                Catalyst
-              </Link>
+                {/* <motion.div
+                  className="relative inline-block cursor-pointer "
+                  whileHover="hover"
+                  initial="initial"
+                > */}
+                <Link
+                  href="/Catlyst Studio"
+                  className="text-white hover:text-orange-500"
+                >
+                  {splitLetters4}
+                </Link>
+                {/* </motion.div> */}
 
-              <Link
-                href="/sign-in"
-                className="text-white hover:text-orange-500"
-              >
-                Sign In
-              </Link>
+                {/* <motion.div
+                  className="relative inline-block cursor-pointer "
+                  whileHover="hover"
+                  initial="initial"
+                > */}
+                <Link
+                  href="/sign-in"
+                  className="text-white hover:text-orange-500 z-10"
+                >
+                  {splitLetters5}
+                </Link>
+                {/* </motion.div> */}
+              </div>
             </div>
 
-            <Link
-              href="/sign-up"
-              className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200 text-white font-semibold p-1 rounded-lg px-3 font-serif hover:text-transparent "
-            >
-              Get Started
-            </Link>
+            <div ref={btnRef2} className="relative block p-3 ">
+              <div
+                ref={spanRef2}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
+              />
+              <motion.div
+                className="relative inline-block cursor-pointer "
+                whileHover="hover"
+                initial="initial"
+              >
+                <Link
+                  href="/sign-up"
+                  className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200 text-white font-semibold p-1 rounded-lg px-3 font-serif"
+                >
+                  {splitLetters6}
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </MaxWidthWrapper>
       </nav>
