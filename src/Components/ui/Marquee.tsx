@@ -9,59 +9,30 @@ function Marquee() {
           <motion.div
             initial={{ x: 0 }}
             animate={{ x: "-100%" }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 10 }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 8 }}
             className=" inline-flex text-[10vw] leading-none font-serif pt-10 -mb-12 "
           >
-            Vision{" "}
             <StarIcon
               width="100"
               height="100"
               fill="black"
               className="mt-10 ml-28 mr-28"
             ></StarIcon>
-            दृष्टि{" "}
+            Conventionality is a Myth{" "}
             <StarIcon
               width="100"
               height="100"
               fill="black"
               className="mt-10 ml-28 mr-28"
             ></StarIcon>
-            חָזוֹן{" "}
+            Conventionality is a Myth{" "}
             <StarIcon
               width="100"
               height="100"
               fill="black"
               className="mt-10 ml-28 mr-28"
             ></StarIcon>
-            όραμα{" "}
-            <StarIcon
-              width="100"
-              height="100"
-              fill="black"
-              className="mt-10 ml-28 mr-28"
-            ></StarIcon>
-            visión{" "}
-            <StarIcon
-              width="100"
-              height="100"
-              fill="black"
-              className="mt-10 ml-28 mr-28"
-            ></StarIcon>
-            visione{" "}
-            <StarIcon
-              width="100"
-              height="100"
-              fill="black"
-              className="mt-10 ml-28 mr-28"
-            ></StarIcon>
-            想象{" "}
-            <StarIcon
-              width="100"
-              height="100"
-              fill="black"
-              className="mt-10 ml-28 mr-28"
-            ></StarIcon>
-            зрение
+            Conventionality is a Myth{" "}
             <StarIcon
               width="100"
               height="100"

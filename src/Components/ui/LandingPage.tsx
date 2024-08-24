@@ -63,9 +63,13 @@ function LandingPage() {
               id="Writeup"
               className="bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text"
             >
-              <div className="font-serif text-[10rem] leading-none hover:text-orange-500 duration-300 text-center">
+              <div className=" flex font-serif text-[10rem] leading-none hover:text-orange-500 duration-300 text-center">
                 {" "}
                 Miles <br></br> Morales
+                <div className=" absolute text-purple-700 -z-10 font-serif text-[10rem] leading-none text-center">
+                  {" "}
+                  Miles <br></br> Morales
+                </div>
               </div>
             </div>
 
