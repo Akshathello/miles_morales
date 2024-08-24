@@ -54,6 +54,7 @@ function WebStudioElement() {
 
             <motion.span
               ref={element}
+              layout
               style={{ opacity: scrollYProgress }}
               className="absolute text-gray-100 text-[10.8rem] whitespace-nowrap font-serif italic"
             >
