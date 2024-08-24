@@ -1,6 +1,6 @@
 "use Client";
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import mousePointer from "../utils/mousePointer";
 
 function WebStudioElement() {
@@ -8,6 +8,7 @@ function WebStudioElement() {
   // const maskRef = useRef<HTMLDivElement | null>(null);
 
   const [isHovered, setIsHovered] = useState(false);
+  const [isPulsing, setIsPulsing] = useState(false);
   const size = isHovered ? 400 : 40;
 
   // const pos = useRef({ x: 0, y: 0 });
@@ -31,23 +32,53 @@ function WebStudioElement() {
   // }, [x, y]);
 
   const element = useRef(null);
+  const element2 = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: element,
-    offset: ["start 0.9", "start 0.25"],
+    offset: ["start 0.9", "start 0.20"],
   });
 
   useEffect(() => {
     scrollYProgress.on("change", (e) => console.log(e));
   }, []);
 
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const translateY = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (progress) => {
+      if (progress > 0.99) {
+        setIsPulsing(true);
+      } else {
+        setIsPulsing(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [scrollYProgress]);
+
   return (
-    <div className=" h-[100rem] bg-[#030712]">
+    <div className=" h-[200rem] bg-[#030712]">
       <div className=" px-[19rem] py-9 items-start -mb-9 pt-[10rem]">
         <div className="relative">
-          <div className="absolute inset-0.5 rounded-lg bg-gradient-to-r from-orange-500 to bg-purple-600  blur-lg opacity-100 animate-pulse"></div>
+          <motion.div
+            ref={element}
+            style={{ opacity, translateY, scale }}
+            initial={{ opacity: 0, y: 100, scale: 0.3 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            className={`absolute inset-0.5 rounded-lg bg-gradient-to-r from-orange-500 to bg-purple-600  blur-lg opacity-100 ${
+              isPulsing ? "animate-pulse" : ""
+            }`}
+          ></motion.div>
 
-          <div className="relative px-5 py4 bg-black rounded-lg leading-none flex items-center justify-center">
+          <motion.div
+            ref={element}
+            layout
+            style={{ opacity: scrollYProgress }}
+            className="relative px-5 py4 bg-black rounded-lg leading-none flex items-center justify-center"
+          >
             <span className="text-gray-100 text-[11rem] whitespace-nowrap font-serif serif-stroke2 italic">
               Web Studio
             </span>
@@ -72,12 +103,12 @@ function WebStudioElement() {
             >
               Web Studio
             </motion.span>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className=" flex justify-center items-center mt-20">
         <div className=" flex leading-[65px] text-center">
-          <div className="font-serif text-white text-[4rem] blur-sm">
+          <div className="font-serif text-white text-[4rem] blur-sm pt-28 pb-28">
             Godly Experience. The finer Level. The cosmic level. An experience
             like none another. What it TAKES!. Passion Driven. Take the plunge.
             Miles to Go!. Nonstop. Vision. Plan. <br /> Get Set Go!
@@ -101,7 +132,7 @@ function WebStudioElement() {
               onMouseLeave={() => {
                 setIsHovered(false);
               }}
-              className=" bg-gradient-to-r from-orange-500 to bg-purple-600"
+              className=" bg-gradient-to-r from-orange-500 to bg-purple-600 pt-28 pb-28"
             >
               Godly Experience. The finer Level. The cosmic level. An experience
               like none another. What it TAKES!. Passion Driven. Take the

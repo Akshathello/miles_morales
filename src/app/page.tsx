@@ -7,6 +7,7 @@ import WebStudioElement from "@/Components/ui/WebStudioElement";
 import Navbar from "@/Components/ui/Navbar";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Test from "@/Components/ui/Test";
 
 gsap.registerPlugin(useGSAP);
 
