@@ -83,7 +83,7 @@
   .mask{
     position: absolute;
     mask-image: url('../../public/Ellipse\ 1.svg');
-    background-color: red;
+    background: linear-gradient(to right, #f97316, #9333ea);
     mask-repeat: no-repeat;
     mask-position: 50%;
     mask-size: 40px;

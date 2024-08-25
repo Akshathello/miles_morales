@@ -76,7 +76,7 @@ function WebStudioElement() {
           <motion.div
             ref={element}
             layout
-            style={{ opacity: scrollYProgress }}
+            style={{ opacity: scrollYProgress, scale }}
             className="relative px-5 py4 bg-black rounded-lg leading-none flex items-center justify-center"
           >
             <span className="text-gray-100 text-[11rem] whitespace-nowrap font-serif serif-stroke2 italic">
@@ -106,12 +106,12 @@ function WebStudioElement() {
           </motion.div>
         </div>
       </div>
-      <div className=" flex justify-center items-center mt-20">
-        <div className=" flex leading-[65px] text-center">
-          <div className="font-serif text-white text-[4rem] blur-sm pt-28 pb-28">
+      <div className="  mt-20">
+        <div className="flex justify-center items-center text-center leading-[65px] ">
+          <div className="font-serif text-white text-[4rem] blur-sm m-28">
             Godly Experience. The finer Level. The cosmic level. An experience
             like none another. What it TAKES!. Passion Driven. Take the plunge.
-            Miles to Go!. Nonstop. Vision. Plan. <br /> Get Set Go!
+            Miles to Go!. Nonstop. Vision. Plan. Get Set Go!
           </div>
           <motion.div
             animate={{
@@ -132,11 +132,11 @@ function WebStudioElement() {
               onMouseLeave={() => {
                 setIsHovered(false);
               }}
-              className=" bg-gradient-to-r from-orange-500 to bg-purple-600 pt-28 pb-28"
+              className=" m-28"
             >
               Godly Experience. The finer Level. The cosmic level. An experience
               like none another. What it TAKES!. Passion Driven. Take the
-              plunge. Miles to Go!. Nonstop. Vision. Plan. <br /> Get Set Go!
+              plunge. Miles to Go!. Nonstop. Vision. Plan. Get Set Go!
             </div>
           </motion.div>
         </div>
