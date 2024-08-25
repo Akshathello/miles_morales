@@ -77,6 +77,8 @@ function WebStudioElement() {
             ref={element}
             layout
             style={{ opacity: scrollYProgress, scale }}
+            initial={{ opacity: 0, y: 100, scale: 0.3 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             className="relative px-5 py4 bg-black rounded-lg leading-none flex items-center justify-center"
           >
             <span className="text-gray-100 text-[11rem] whitespace-nowrap font-serif serif-stroke2 italic">
