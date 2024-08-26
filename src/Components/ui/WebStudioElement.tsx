@@ -62,7 +62,7 @@ function WebStudioElement() {
   return (
     <div className=" h-[200rem] bg-[#030712]">
       <div className=" px-[19rem] py-9 items-start -mb-9 pt-[10rem]">
-        <div className="relative">
+        <div className="flex relative">
           <motion.div
             ref={element}
             style={{ opacity, translateY, scale }}
@@ -76,9 +76,7 @@ function WebStudioElement() {
           <motion.div
             ref={element}
             layout
-            style={{ opacity: scrollYProgress, scale }}
-            initial={{ opacity: 0, y: 100, scale: 0.3 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            style={{ opacity: scrollYProgress }}
             className="relative px-5 py4 bg-black rounded-lg leading-none flex items-center justify-center"
           >
             <span className="text-gray-100 text-[11rem] whitespace-nowrap font-serif serif-stroke2 italic">
@@ -108,7 +106,7 @@ function WebStudioElement() {
           </motion.div>
         </div>
       </div>
-      <div className="  mt-20">
+      <div className="mt-20">
         <div className="flex justify-center items-center text-center leading-[65px] ">
           <div className="font-serif text-white text-[4rem] blur-sm m-28">
             Godly Experience. The finer Level. The cosmic level. An experience
@@ -134,7 +132,7 @@ function WebStudioElement() {
               onMouseLeave={() => {
                 setIsHovered(false);
               }}
-              className=" m-28"
+              className="m-28"
             >
               Godly Experience. The finer Level. The cosmic level. An experience
               like none another. What it TAKES!. Passion Driven. Take the

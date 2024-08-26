@@ -7,6 +7,7 @@ import WebStudioElement from "@/Components/ui/WebStudioElement";
 import Navbar from "@/Components/ui/Navbar";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+// import Test from "@/Components/ui/Test";
 
 gsap.registerPlugin(useGSAP);
 
@@ -46,7 +47,7 @@ export default function Home() {
   return (
     <>
       <div ref={container} className=" h-5 bg-black sticky top-0 z-50">
-        <div className="bg-black/0 backdrop-blur-lg">
+        <div className="bg-black/0 backdrop-blur-lg scroll-smooth">
           <Navbar />
         </div>
       </div>
@@ -54,6 +55,7 @@ export default function Home() {
         <LandingPage></LandingPage>
         <Marquee></Marquee>
         <WebStudioElement></WebStudioElement>
+        {/* <Test></Test> */}
       </div>
     </>
   );
