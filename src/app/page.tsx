@@ -9,7 +9,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import DesignStudio from "@/Components/ui/DesignStudio/DesignStudioBanner";
 import VisionStudio from "@/Components/ui/VisionStudio/VisionStudioBanner";
-import WebStudioMaterial from "@/Components/ui/WebStudio/WebStudioMaterial";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // import Test from "@/Components/ui/Test";

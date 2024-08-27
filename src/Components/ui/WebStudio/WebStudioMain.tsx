@@ -9,7 +9,7 @@ import WebStudioBlurryLetters from "./WebStudioBlurryLetters";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WebStudioElement = forwardRef<HTMLDivElement>((props, ref) => {
+const WebStudioMain = forwardRef<HTMLDivElement>((props, ref) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -53,4 +53,4 @@ const WebStudioElement = forwardRef<HTMLDivElement>((props, ref) => {
   );
 });
 
-export default WebStudioElement;
+export default WebStudioMain;
