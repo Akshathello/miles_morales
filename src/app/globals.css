@@ -65,30 +65,35 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     /* background-color: #030712 */
-    background-color: #FFF8DC	;
+    background-color: #FFF8DC;
   }
+  /* body.lock-scroll {
+    overflow: hidden;
+  } */
 
-  .serif-stroke{
+  .serif-stroke {
     -webkit-text-stroke-width: 3px;
     -webkit-text-fill-color: transparent;
   }
-  .serif-stroke2{
+
+  .serif-stroke2 {
     -webkit-text-stroke-width: 2px;
     -webkit-text-fill-color: transparent;
   }
 
-  .serif-stroke3{
+  .serif-stroke3 {
     /* -webkit-text-stroke-width: 2px; */
-    background:linear-gradient(to right, #f97316, #9333ea) ;
+    background: linear-gradient(to right, #f97316, #9333ea);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 
   }
 
-  .mask{
+  .mask {
     position: absolute;
     mask-image: url('../../public/Ellipse\ 2.svg');
     background: linear-gradient(to right, #f97316, #9333ea);
@@ -97,17 +102,36 @@
     mask-size: 40px;
   }
 
-  .mask1{
+  .mask1 {
     position: absolute;
     mask-image: url('../../public/Ellipse\ 2.svg');
     mask-repeat: no-repeat;
-    background:linear-gradient(to right, #f97316, #9333ea);
-    color:white;
+    background: linear-gradient(to right, #f97316, #9333ea);
+    color: white;
     mask-position: 50%;
     mask-size: 40px;
   }
 
- 
+  .libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .libre-baskerville-regular-italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+
+
 
 
 }

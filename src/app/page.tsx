@@ -1,15 +1,21 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LandingPage from "@/Components/ui/LandingPage";
 import Marquee from "@/Components/ui/Marquee";
-import WebStudioElement from "@/Components/ui/WebStudioElement";
+import WebStudioMain from "@/Components/ui/WebStudio/WebStudioMain";
 import Navbar from "@/Components/ui/Navbar";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import DesignStudio from "@/Components/ui/DesignStudio/DesignStudioBanner";
+import VisionStudio from "@/Components/ui/VisionStudio/VisionStudioBanner";
+import WebStudioMaterial from "@/Components/ui/WebStudio/WebStudioMaterial";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 // import Test from "@/Components/ui/Test";
 
 gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const container = useRef<HTMLDivElement>(null);
@@ -54,7 +60,9 @@ export default function Home() {
       <div>
         <LandingPage></LandingPage>
         <Marquee></Marquee>
-        <WebStudioElement></WebStudioElement>
+        <WebStudioMain></WebStudioMain>
+        <DesignStudio></DesignStudio>
+        <VisionStudio></VisionStudio>
         {/* <Test></Test> */}
       </div>
     </>

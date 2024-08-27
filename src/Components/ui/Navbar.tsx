@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import Link from "next/link";
-import ButtonAnimate from "./ButtonAnimate";
+import ButtonAnimate from "./Animations/ButtonAnimate";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { color, easeInOut, motion } from "framer-motion";

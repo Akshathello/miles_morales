@@ -86,7 +86,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Navbar from "./Navbar";
-import MovingAnimation from "./MovingAnimation";
+import MovingAnimation from "./Animations/MovingAnimation";
 import Marquee from "./Marquee";
 import { motion } from "framer-motion";
 import mousePointer from "../utils/mousePointer";

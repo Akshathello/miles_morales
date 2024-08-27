@@ -3,7 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import React, { Children, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import MovingAnimation from "@/Components/ui/MovingAnimation";
+import MovingAnimation from "@/Components/ui/Animations/MovingAnimation";
 
 gsap.registerPlugin(useGSAP);
 
