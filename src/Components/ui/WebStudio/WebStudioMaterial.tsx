@@ -84,5 +84,6 @@ const WebStudioMaterial = forwardRef<HTMLDivElement, WebProps>(
     );
   }
 );
+WebStudioMaterial.displayName = "WebStudioMaterial";
 
 export default WebStudioMaterial;
