@@ -1,3 +1,4 @@
+import mousePointer from "@/Components/utils/mousePointer";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
