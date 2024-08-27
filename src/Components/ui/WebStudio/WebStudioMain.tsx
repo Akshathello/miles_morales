@@ -37,7 +37,7 @@ const WebStudioMain = forwardRef<HTMLDivElement>((props, ref) => {
 
   useEffect(() => {
     scrollYProgress.on("change", (e) => console.log(e));
-  }, []);
+  }, [scrollYProgress]);
 
   return (
     <div id="Webstudio" className=" h-[200rem] bg-[#030712]">
@@ -52,5 +52,5 @@ const WebStudioMain = forwardRef<HTMLDivElement>((props, ref) => {
     </div>
   );
 });
-
+WebStudioMain.displayName = "WebStudioMain";
 export default WebStudioMain;
