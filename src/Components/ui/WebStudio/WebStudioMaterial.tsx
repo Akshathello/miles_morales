@@ -59,7 +59,7 @@ const WebStudioMaterial = forwardRef<HTMLDivElement, WebProps>(
               start: "10% bottom",
               end: "bottom bottom",
               scrub: 2,
-              markers: true,
+              // markers: true,
             },
           });
 
