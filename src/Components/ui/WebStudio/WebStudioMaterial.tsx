@@ -1,7 +1,9 @@
 import { useGSAP } from "@gsap/react";
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, ReactElement, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ReactNode } from "react";
+import { Span } from "next/dist/trace";
 
 gsap.registerPlugin(ScrollTrigger);
 interface WebProps {
@@ -12,33 +14,177 @@ interface WebProps {
 const WebStudioMaterial = forwardRef<HTMLDivElement, WebProps>(
   ({ id }, ref) => {
     const container = useRef<HTMLDivElement>(null);
-    const tl = useRef<gsap.core.Timeline | null>(null);
+    // const tl = useRef<gsap.core.Timeline | null>(null);
+    const lettersRef = useRef<Array<HTMLSpanElement | null>>([]);
+
+    const splitTextIntoSpans = (
+      text: string,
+      baseIndex = 0,
+      insertInstructions?: {
+        Nodes: ReactElement | ReactElement[];
+        index: number;
+      }[]
+    ): ReactNode[] => {
+      const spans = text.split("").map((char, index) => (
+        <span
+          key={baseIndex + index}
+          className="inline-block"
+          ref={(el) => {
+            lettersRef.current[index] = el;
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ));
+
+      if (insertInstructions) {
+        insertInstructions.forEach(({ Nodes, index }) => {
+          if (Array.isArray(Nodes)) {
+            spans.splice(index, 0, ...Nodes);
+          } else {
+            spans.splice(index, 0, Nodes);
+          }
+        });
+      }
+
+      return spans;
+    };
 
     useGSAP(
       () => {
         if (container.current) {
-          tl.current = gsap.timeline();
-
-          gsap.from(container.current, {
-            x: "-700px",
-            y: "290px",
-            transform: "scaleX(0) scaleY(0) translateX(10%) translateY(10%)",
+          const tl = gsap.timeline({
             scrollTrigger: {
-              trigger: "#WebElem",
-              start: "40% center",
-              end: "50% center",
-              scrub: true,
-              // markers: true,
+              trigger: container.current,
+              start: "10% bottom",
+              end: "bottom bottom",
+              scrub: 2,
+              markers: true,
             },
           });
+
+          tl.from(container.current, {
+            y: "600px",
+            scale: 1,
+            opacity: 0.5,
+            duration: 1,
+            ease: "power3.out",
+          });
+
+          lettersRef.current.forEach((char, index) => {
+            if (char) {
+              tl.fromTo(
+                char,
+                {
+                  opacity: 0,
+                  // y: -50,
+                  // x: -70,
+                  z: 100,
+                  scaleX: 3,
+                  color: "#f97316",
+                },
+                {
+                  opacity: 1,
+                  scaleX: 1,
+                  y: 0,
+                  x: 0,
+                  z: 0,
+                  color: "#ffffff",
+                  duration: 1,
+                  delay: index * 0.04,
+                  ease: "power3.out",
+                },
+                index * 0.05
+              );
+            }
+          });
         }
+        console.log("LettersRef:", lettersRef);
+        console.log("totalLetter:", lettersRef.current.length);
       },
       {
         scope: container,
       }
     );
 
-    useGSAP;
+    const word = "captivating";
+
+    const splitLetters = word.split(" ").map((char, index) => {
+      return (
+        <span
+          key={index}
+          className="libre-baskerville-bold italic pr-2 pl-2 serif-stroke3"
+        >
+          {char}
+        </span>
+      );
+    });
+
+    const word1 = "Web Studio";
+
+    const splitLetters1 = word1.split(" ").map((char, index) => {
+      return (
+        <span
+          key={index}
+          className="libre-baskerville-bold italic pr-2 pl-2 serif-stroke3"
+        >
+          {char}
+        </span>
+      );
+    });
+
+    const word2 = "in-depth";
+
+    const splitLetters2 = word2.split(" ").map((char, index) => {
+      return (
+        <span
+          key={index}
+          className="libre-baskerville-bold italic pr-2 pl-2 serif-stroke3"
+        >
+          {char}
+        </span>
+      );
+    });
+
+    const word3 = "hypothetically";
+
+    const splitLetters3 = word3.split(" ").map((char, index) => {
+      return (
+        <span
+          key={index}
+          className="libre-baskerville-bold italic pr-2 pl-2 serif-stroke3"
+        >
+          {char}
+        </span>
+      );
+    });
+
+    const word4 = "agility";
+
+    const splitLetters4 = word4.split(" ").map((char, index) => {
+      return (
+        <span
+          key={index}
+          className="libre-baskerville-bold italic pr-2 pl-2 serif-stroke3"
+        >
+          {char}
+        </span>
+      );
+    });
+
+    const word5 = `"Web Studio"`;
+
+    const splitLetters5 = word5.split(" ").map((char, index) => {
+      return (
+        <span
+          key={index}
+          className="libre-baskerville-bold italic pr-2 pl-2 serif-stroke3"
+        >
+          {char}
+        </span>
+      );
+    });
+
     return (
       <div
         id="WebElem"
@@ -46,40 +192,30 @@ const WebStudioMaterial = forwardRef<HTMLDivElement, WebProps>(
         className="flex absolute justify-center items-center mb-72"
       >
         <div className="h-[580px] w-[1500px] rounded-lg absolute inset-0.5 bg-gradient-to-r from-orange-500 to bg-purple-600 opacity-100 blur-lg">
-          {" "}
+          {""}
         </div>
 
-        <p className="h-[580px] w-[1500px] rounded-lg relative bg-black text-[3rem] text-white font-serif z-10 text-center leading-[3.25rem] p-10 inline-block">
-          We can steer the audience, only if we are
-          <span className="libre-baskerville-bold italic pr-2 pl-2 inline-block serif-stroke3">
-            captivating
-          </span>
-          enough to do so. The name{" "}
-          <span className="libre-baskerville-bold italic pr-2 pl-2 inline-block serif-stroke3">
-            Web studio
-          </span>{" "}
-          is a culmination of generic words but it engulfs the constant stream
-          of creativity. <br /> <br />
-          Fundamentally speaking, A website offers an{" "}
-          <span className="libre-baskerville-bold italic pr-2 pl-2 inline-block serif-stroke3">
-            in-depth
-          </span>{" "}
-          analysis into your business and it{" "}
-          <span className="libre-baskerville-bold italic pr-2 pl-2 inline-block serif-stroke3">
-            hypothetically
-          </span>{" "}
-          tailors a intricate discussion with the user which acts as a precursor
-          to the{" "}
-          <span className="libre-baskerville-bold italic pr-2 pl-2 inline-block serif-stroke3">
-            agility
-          </span>{" "}
-          of the business. The underlying passion can be highlighted through
-          this facade, hence the name “
-          <span className="libre-baskerville-bold italic pr-2 pl-2 inline-block serif-stroke3">
-            Web Studio
-          </span>
-          ”.
-        </p>
+        <span className="h-[580px] w-[1500px] rounded-lg relative bg-black text-[3rem] text- font-serif z-10 text-center leading-[3.25rem] p-10 inline-block text-white">
+          {splitTextIntoSpans(
+            `We can steer the audience, only if we are enough to do so. The name is a culmination of generic words but it engulfs the constant stream of creativity. Fundamentally speaking, A website offers an analysis into your business and it tailors an intricate discussion with the user which acts as a precursor to the of the business. The underlying passion can be highlighted through this facade,hence the name`,
+            0,
+            [
+              { Nodes: splitLetters, index: 42 },
+              { Nodes: <br />, index: 55 },
+              { Nodes: splitLetters1, index: 69 },
+              { Nodes: <br />, index: 112 },
+              { Nodes: <br />, index: 156 },
+              { Nodes: <br />, index: 156 },
+              { Nodes: splitLetters2, index: 203 },
+              { Nodes: splitLetters3, index: 236 },
+              { Nodes: <br />, index: 272 },
+              { Nodes: splitLetters4, index: 320 },
+              { Nodes: <br />, index: 327 },
+              { Nodes: <br />, index: 394 },
+              { Nodes: splitLetters5, index: 417 },
+            ]
+          )}
+        </span>
       </div>
     );
   }

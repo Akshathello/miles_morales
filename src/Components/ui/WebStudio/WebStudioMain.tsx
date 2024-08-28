@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import WebStudioBanner from "./WebStudioBanner";
 import WebStudioBlurryLetters from "./WebStudioBlurryLetters";
 import WebStudioBannerWithMask from "./WebStudioBannerWithMask";
+import WebStudioMaterialMask from "./WebStudioMaterialMask";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,13 +42,13 @@ const WebStudioMain = forwardRef<HTMLDivElement>((props, ref) => {
   }, [scrollYProgress]);
 
   return (
-    <div id="Webstudio" className=" h-[200rem] bg-[#030712]">
+    <div className=" h-[150rem] bg-[#030712]">
       <div ref={containerRef}>
         <WebStudioBannerWithMask />
         <div className="flex justify-center items-center">
           <WebStudioBlurryLetters></WebStudioBlurryLetters>
-          <WebStudioMaterial></WebStudioMaterial>
-          <WebStudioMaterial></WebStudioMaterial>
+          <WebStudioMaterialMask></WebStudioMaterialMask>
+          {/* <WebStudioMaterial></WebStudioMaterial> */}
         </div>
       </div>
     </div>

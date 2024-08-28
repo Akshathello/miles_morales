@@ -130,7 +130,7 @@ function LandingPage() {
                   WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
                   WebkitMaskSize: `${size}px`,
                 }}
-                className="absolute mask1 "
+                className="absolute mask1"
               >
                 <div
                   onMouseEnter={() => {

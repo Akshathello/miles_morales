@@ -19,6 +19,9 @@ const config = {
     },
 
     extend: {
+      dropShadow: {
+        md: "35px 35px rgba(0, 0, 0, 0.25)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
