@@ -120,7 +120,7 @@ function LandingPage() {
                 className=""
               />
 
-              <motion.div
+              {/* <motion.div
                 animate={{
                   WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
                   WebkitMaskSize: `${size}px`,
@@ -151,7 +151,7 @@ function LandingPage() {
                     className="absolute"
                   />
                 </div>
-              </motion.div>
+              </motion.div> */}
             </div>
           </div>
         </div>
