@@ -1,6 +1,6 @@
 import React from "react";
 
-function DesignStudio() {
+function DesignStudioBanner() {
   return (
     <div className=" px-[12rem] py-16 items-center">
       <div className="relative">
@@ -28,4 +28,4 @@ function DesignStudio() {
   );
 }
 
-export default DesignStudio;
+export default DesignStudioBanner;

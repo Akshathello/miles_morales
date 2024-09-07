@@ -42,7 +42,7 @@ const WebStudioMain = forwardRef<HTMLDivElement>((props, ref) => {
   }, [scrollYProgress]);
 
   return (
-    <div className=" h-[150rem] bg-[#030712]">
+    <div className=" h-[120rem] bg-[#030712]">
       <div ref={containerRef}>
         <WebStudioBannerWithMask />
         <div className="flex justify-center items-center">

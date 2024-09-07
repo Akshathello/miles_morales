@@ -7,9 +7,9 @@ import WebStudioMain from "@/Components/ui/WebStudio/WebStudioMain";
 import Navbar from "@/Components/ui/Navbar";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import DesignStudio from "@/Components/ui/DesignStudio/DesignStudioBanner";
-import VisionStudio from "@/Components/ui/VisionStudio/VisionStudioBanner";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DesignStudioMain from "@/Components/ui/DesignStudio/DesignStudioMain";
+import VisionStudioMain from "@/Components/ui/VisionStudio/VisionStudioMain";
 
 // import Test from "@/Components/ui/Test";
 
@@ -60,8 +60,8 @@ export default function Home() {
         <LandingPage></LandingPage>
         <Marquee></Marquee>
         <WebStudioMain></WebStudioMain>
-        <DesignStudio></DesignStudio>
-        <VisionStudio></VisionStudio>
+        <DesignStudioMain></DesignStudioMain>
+        <VisionStudioMain></VisionStudioMain>
         {/* <Test></Test> */}
       </div>
     </>

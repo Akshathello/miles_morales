@@ -1,6 +1,6 @@
 import React from "react";
 
-function VisionStudio() {
+function VisionStudioBanner() {
   return (
     <div className=" px-[14rem] py-16 items-center -mb-9">
       <div className="relative">
@@ -36,4 +36,4 @@ function VisionStudio() {
   );
 }
 
-export default VisionStudio;
+export default VisionStudioBanner;
