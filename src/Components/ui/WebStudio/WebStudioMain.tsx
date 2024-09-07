@@ -19,7 +19,7 @@ const WebStudioMain = forwardRef<HTMLDivElement>((props, ref) => {
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top ",
-        end: "+=1400",
+        end: "+=1200",
         pin: true,
         pinSpacing: true,
         scrub: true,

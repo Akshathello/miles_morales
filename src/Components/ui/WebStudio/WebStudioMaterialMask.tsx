@@ -13,7 +13,7 @@ function WebStudioMaterialMask() {
     <>
       <WebStudioMaterial />
 
-      <motion.div
+      {/* <motion.div
         animate={{
           WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
           WebkitMaskSize: `${size}px`,
@@ -36,7 +36,7 @@ function WebStudioMaterialMask() {
             <WebStudioMaterial />
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </>
   );
 }
