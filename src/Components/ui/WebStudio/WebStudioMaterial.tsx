@@ -3,7 +3,6 @@ import React, { forwardRef, ReactElement, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ReactNode } from "react";
-import { Span } from "next/dist/trace";
 
 gsap.registerPlugin(ScrollTrigger);
 interface WebProps {
@@ -27,10 +26,10 @@ const WebStudioMaterial = forwardRef<HTMLDivElement, WebProps>(
     ): ReactNode[] => {
       const spans = text.split("").map((char, index) => (
         <span
-          key={baseIndex + index}
+          key={`char- ${baseIndex + index}`}
           className="inline-block"
           ref={(el) => {
-            lettersRef.current[index] = el;
+            lettersRef.current[baseIndex + index] = el;
           }}
         >
           {char === " " ? "\u00A0" : char}
@@ -40,9 +39,23 @@ const WebStudioMaterial = forwardRef<HTMLDivElement, WebProps>(
       if (insertInstructions) {
         insertInstructions.forEach(({ Nodes, index }) => {
           if (Array.isArray(Nodes)) {
-            spans.splice(index, 0, ...Nodes);
+            spans.splice(
+              index,
+              0,
+              ...Nodes.map((node, i) =>
+                React.cloneElement(node, {
+                  key: `insert- ${baseIndex + index}- ${i}`,
+                })
+              )
+            );
           } else {
-            spans.splice(index, 0, Nodes);
+            spans.splice(
+              index,
+              0,
+              React.cloneElement(Nodes, {
+                key: `insert - ${baseIndex + index}`,
+              })
+            );
           }
         });
       }
@@ -205,7 +218,7 @@ const WebStudioMaterial = forwardRef<HTMLDivElement, WebProps>(
               { Nodes: splitLetters1, index: 69 },
               { Nodes: <br />, index: 112 },
               { Nodes: <br />, index: 156 },
-              { Nodes: <br />, index: 156 },
+              { Nodes: <br />, index: 157 },
               { Nodes: splitLetters2, index: 203 },
               { Nodes: splitLetters3, index: 236 },
               { Nodes: <br />, index: 272 },

@@ -93,6 +93,48 @@
 
   }
 
+  @font-face {
+  font-family: 'Boxing-Regular';
+  src: url('/fonts/Boxing-Regular.woff2') format('woff2'),
+       url('/fonts/Boxing-Regular.woff') format('woff'),
+       url('/fonts/Boxing-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Stardom-Regular';
+  src: url('/fonts/Stardom-Regular.woff2') format('woff2'),
+       url('/fonts/Stardom-Regular.woff') format('woff'),
+       url('/fonts/Stardom-Regular.ttf') format('truetype');
+  font-weight: 100;
+  font-display: swap;
+  font-style: normal;
+}
+
+.Stardom-Regular{
+  font-family: 'Stardom-Regular', serif
+}
+
+.Boxing-Regular {
+  font-family: 'Boxing-Regular', sans-serif;
+}
+
+
+.Boxing-Regular1 {
+  font-family: 'Boxing-Regular', sans-serif;
+  background: linear-gradient(to right, #f97316, #9333ea);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.Stardom-Regular1 {
+  font-family: 'Stardom-Regular', sans-serif;
+  background: linear-gradient(to right, #f97316, #9333ea);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
   .mask {
     position: absolute;
     mask-image: url('../../public/Ellipse\ 2.svg');

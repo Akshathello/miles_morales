@@ -1,9 +1,11 @@
 import React from "react";
 import DesignStudioBannerWithMask from "./DesignStudioBannerWithMask";
+import DesignStudioMaterial from "./DesignStudioMaterial";
 
 function DesignStudioMain() {
   return (
-    <div className=" min-h-screen bg-black">
+    <div className=" h-[100rem] bg-black">
+      <DesignStudioMaterial></DesignStudioMaterial>
       <DesignStudioBannerWithMask></DesignStudioBannerWithMask>
     </div>
   );
