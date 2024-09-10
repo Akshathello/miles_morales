@@ -5,11 +5,11 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Navbar from "./Navbar";
-import MovingAnimation from "./Animations/MovingAnimation";
+// import MovingAnimation from "./Animations/MovingAnimation";
 import Marquee from "./Marquee";
 import { motion } from "framer-motion";
 import mousePointer from "../utils/mousePointer";
-import { FactoryIcon } from "lucide-react";
+import MovingAnimation from "./Animations/MovingAnimation";
 
 gsap.registerPlugin(useGSAP);
 
@@ -69,11 +69,14 @@ function LandingPage() {
 
   return (
     <>
-      <MovingAnimation />
+      <div className="absolute -z-10">
+        <MovingAnimation />
+      </div>
+      {/* <Test /> */}
 
       <div id="landingPage" ref={container} className="overflow-hidden">
         <div className="min-h-screen bg-black pt-11">
-          <div className="flex justify-evenly">
+          <div className="flex justify-evenly ">
             <div className=" flex items-center justify-center m-56 ">
               <div
                 id="Writeup1"

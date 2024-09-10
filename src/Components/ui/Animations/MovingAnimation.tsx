@@ -13,15 +13,15 @@ const STAGGER = 0.025;
 const DURATION1 = 0.75;
 const STAGGER1 = 0.05;
 
-const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
+const MovingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
   const word = "Creative";
   const letterVariants = {
-    hidden: { y: "100%" },
-    visible: { y: "0%" },
+    hidden: { x: "70%", opacity: 0, scaleX: -3, scale: 0 },
+    visible: { x: "0%", opacity: 1, scaleX: 1, scale: 1 },
   };
   const letterVariants2 = {
-    hidden: { y: "-100%" },
-    visible: { y: "0%" },
+    hidden: { x: "-70%", opacity: 0, scaleX: -3, scale: 0 },
+    visible: { x: "0%", opacity: 1, scaleX: 1, scale: 1 },
   };
   const splitLetters = word.split("").map((letter, index) => (
     <motion.span
@@ -32,9 +32,10 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
       transition={{
         duration: DURATION1,
         delay: index * STAGGER1,
+        // repeat: Infinity,
         ease: "easeInOut",
       }}
-      className="inline-block text-[10rem] font-serif serif-stroke font-extrabold bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic tracking-wide"
+      className="inline-block lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 font-extrabold bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic tracking-wide whitespace-nowrap"
     >
       {letter}
     </motion.span>
@@ -47,11 +48,12 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
       initial="hidden"
       animate="visible"
       transition={{
+        // repeat: Infinity,
         duration: DURATION,
         delay: index * STAGGER,
         ease: "easeInOut",
       }}
-      className="inline-block text-[10rem] font-serif serif-stroke font-extrabold tracking-wide"
+      className="inline-block lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 font-extrabold tracking-wide text-black whitespace-nowrap"
     >
       {letter}
     </motion.span>
@@ -63,11 +65,12 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
       initial="hidden"
       animate="visible"
       transition={{
+        // repeat: Infinity,
         duration: DURATION1,
         delay: index * STAGGER1,
         ease: "easeInOut",
       }}
-      className="inline-block text-[10rem] font-serif serif-stroke font-extrabold tracking-wide bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic"
+      className="inline-block lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 font-extrabold tracking-wide bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic whitespace-nowrap"
     >
       {letter}
     </motion.span>
@@ -76,8 +79,8 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
   const word1 = "Embarking";
 
   const letterVariants1 = {
-    hidden: { x: "800%" },
-    visible: { x: "0%" },
+    hidden: { x: "200%", opacity: 0, scaleX: -3, scaleY: 0 },
+    visible: { x: "0%", opacity: 1, scaleX: 1, scaleY: 1 },
   };
 
   const letterVariants3 = {
@@ -94,9 +97,10 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
       transition={{
         duration: DURATION1,
         delay: index * STAGGER1,
+        // repeat: Infinity,
         ease: "easeInOut",
       }}
-      className="inline-block text-[10rem] font-serif serif serif-stroke text-orange-500 italic leading-9"
+      className="inline-block lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 text-orange-500 italic "
     >
       {letter}
     </motion.span>
@@ -109,11 +113,12 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
       initial="hidden"
       animate="visible"
       transition={{
+        // repeat: Infinity,
         duration: DURATION1,
         delay: index * STAGGER1,
         ease: "easeInOut",
       }}
-      className="inline-block text-[10rem] font-serif serif serif-stroke text-black italic leading-9"
+      className="inline-block lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 text-black italic "
     >
       {letter}
     </motion.span>
@@ -131,11 +136,12 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
       initial="hidden"
       animate="visible"
       transition={{
+        // repeat: Infinity,
         duration: DURATION1,
         delay: index * STAGGER1,
         ease: "easeInOut",
       }}
-      className="inline-block text-[10rem] font-serif serif serif-stroke text-purple-600 italic leading-9"
+      className="inline-block lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 text-purple-600 italic leading-9"
     >
       {letter}
     </motion.span>
@@ -143,8 +149,8 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
 
   const word3 = "Journey";
   const letterVariants5 = {
-    hidden: { y: "500%" },
-    visible: { y: "0" },
+    hidden: { y: "100%", opacity: 0, scaleX: 3, scale: 0 },
+    visible: { y: "0", opacity: 1, scaleX: 0, scale: 1 },
   };
   const splitLetters03 = word3.split("").map((letter, index) => (
     <motion.span
@@ -153,11 +159,12 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
       initial="hidden"
       animate="visible"
       transition={{
+        // repeat: Infinity,
         duration: DURATION,
         delay: index * STAGGER,
         ease: "easeInOut",
       }}
-      className="inline-block text-[10rem] font-serif serif serif-stroke text-orange-500 italic leading-9"
+      className="inline-block lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 text-orange-500 italic"
     >
       {letter}
     </motion.span>
@@ -165,49 +172,68 @@ const movingAnimation: React.FC<movProps> = ({ href, variants, children }) => {
 
   return (
     <>
-      <div className="relative flex justify-start items-start leading-none -z-10 pl-10">
-        <span className=" absolute pt-20 text-[10rem] font-serif serif serif-stroke text-black italic leading-9">
-          {splitLetters0}
-        </span>
+      <div className="flex relative px-8 p-5 -z-10 min-h-screen -mt-10">
+        {/* <div className="relative flex justify-start items-start leading-none pl-10"> */}
+        <div className=" justify-start items-start lg:leading-[170px] md:leading-[130px] leading-[90px] ">
+          {/* //Splitletters0 is Embarking */}
+          <div className="flex flex-1 pt-20 text-black italic ">
+            {splitLetters0}
 
-        <span className=" absolute pt-20 text-[10rem] font-serif serif serif-stroke text-black italic leading-9">
-          {splitLetters01}
-        </span>
+            <span className="absolute text-black italic">{splitLetters01}</span>
+          </div>
 
-        <span className="absolute text-[10rem] mt-48 mr-[660px] font-serif serif-stroke text-black italic">
-          {splitLetters02}
-        </span>
+          <div className=" hidden sm:hidden md:flex lg:flex flex-1 whitespace-nowrap lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 text-black italic ">
+            On a{/* splitLetters02 is "On a" */}
+            <span className="absolute text-black italic">{splitLetters02}</span>
+            <div className=" flex flex-1 whitespace-nowrap font-extrabold bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic tracking-wide lg:pl-24 md:pl-10 pl-10">
+              {/* splitLetters is "creative" */}
 
-        <span className="absolute text-[10rem] mt-48 mr-[660px] font-serif serif-stroke text-black italic">
-          On a
-        </span>
+              {splitLetters}
 
-        <span className=" absolute -z-10 text-[10rem] mt-48 ml-96 font-serif serif-stroke font-extrabold bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic tracking-wide">
-          {splitLetters}
-        </span>
+              <span className=" absolute font-extrabold bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic tracking-wide">
+                {/* splitLetters is "creative" */}
+                {splitLetters1}
+              </span>
+              <span className="absolute font-extrabold italic tracking-wide">
+                {/* splitLetters is "creative" */}
+                {splitLettersWithoutFill}
+              </span>
+            </div>
+          </div>
 
-        <span className=" absolute -z-10 text-[10rem] mt-48 ml-96 font-serif serif-stroke font-extrabold bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic tracking-wide">
-          {splitLetters1}
-        </span>
+          <div className=" flex sm:flex md:hidden lg:hidden flex-1 lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 text-black italic">
+            On a{/* splitLetters02 is "On a" */}
+            <span className="absolute text-black italic">{splitLetters02}</span>
+          </div>
 
-        <span className="absolute -z-10 text-[10rem] mt-48 ml-96 font-serif serif-stroke font-extrabold italic tracking-wide">
-          {splitLettersWithoutFill}
-        </span>
+          <div className=" flex sm:flex md:hidden lg:hidden flex-1 font-extrabold bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic tracking-wide lg:pl-24 md:pl-10 pl-10">
+            {/* splitLetters is "creative" */}
 
-        <div className="absolute h-[300px] w-[900px] m-[345px] bg-[#FFF8DC]"></div>
-        <div className="absolute h-[200px] w-[900px] ml-60 bg-[#FFF8DC] -z-10"></div>
-        <div className="absolute h-[200px] w-[660px] ml-[815px] bg-[#FFF8DC]"></div>
-        <div className="absolute h-[180px] w-[900px] mt-[525px] bg-[#FFF8DC] z-10"></div>
+            {splitLetters}
 
-        <span className="absolute text-[10rem] mt-[350px] font-serif serif serif-stroke text-black italic font-extrabold ">
-          {splitLetters03}
-        </span>
-        <span className="absolute text-[10rem] mt-[350px] font-serif serif serif-stroke text-black italic font-extrabold ">
-          Journey
-        </span>
+            <span className=" absolute font-extrabold bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent bg-clip-text italic tracking-wide">
+              {/* splitLetters is "creative" */}
+              {splitLetters1}
+            </span>
+            <span className="absolute font-extrabold italic tracking-wide">
+              {/* splitLetters is "creative" */}
+              {splitLettersWithoutFill}
+            </span>
+          </div>
+
+          <div className="flex flex-1 text-black italic font-extrabold ">
+            {/* splitLetters03 is "Journey" */}
+            {splitLetters03}
+            <span className="absolute lg:text-[10rem] md:text-[7.5rem] text-[5rem] lg:serif-stroke md:serif-stroke01 serif-stroke02 text-black italic font-extrabold ">
+              Journey
+            </span>
+          </div>
+        </div>
+
+        {/* </div> */}
       </div>
     </>
   );
 };
 
-export default movingAnimation;
+export default MovingAnimation;

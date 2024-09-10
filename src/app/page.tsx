@@ -10,6 +10,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DesignStudioMain from "@/Components/ui/DesignStudio/DesignStudioMain";
 import VisionStudioMain from "@/Components/ui/VisionStudio/VisionStudioMain";
+// import Test from "@/Components/ui/Test";
 
 // import Test from "@/Components/ui/Test";
 

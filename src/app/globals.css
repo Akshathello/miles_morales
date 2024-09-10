@@ -76,11 +76,23 @@
   } */
 
   .serif-stroke {
+    font-family: "Georgia", serif;
     -webkit-text-stroke-width: 3px;
     -webkit-text-fill-color: transparent;
   }
 
+  .serif-stroke01 {
+    font-family: "Georgia", serif;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-fill-color: transparent;
+  }
+  .serif-stroke02 {
+    font-family: "Georgia", serif;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-fill-color: transparent;
+  }
   .serif-stroke2 {
+    font-family: "Georgia", serif;
     -webkit-text-stroke-width: 2px;
     -webkit-text-fill-color: transparent;
   }
@@ -180,6 +192,12 @@
     font-family: "Libre Baskerville", serif;
     font-weight: 400;
     font-style: italic;
+  }
+
+  .transition-opacity1{
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
   }
 
 
