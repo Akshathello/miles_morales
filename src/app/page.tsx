@@ -63,7 +63,7 @@ export default function Home() {
         <WebStudioMain></WebStudioMain>
         <DesignStudioMain></DesignStudioMain>
         <VisionStudioMain></VisionStudioMain>
-        <Test></Test>
+        {/* <Test></Test> */}
       </div>
     </>
   );
