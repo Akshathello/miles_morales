@@ -1,22 +1,31 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import MaxWidthWrapper from "../MaxWidthWrapper";
+import MaxWidthWrapper from "../../MaxWidthWrapper";
 import Link from "next/link";
-import ButtonAnimate from "./Animations/ButtonAnimate";
+import ButtonAnimate from "../Animations/ButtonAnimate";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { color, easeInOut, motion } from "framer-motion";
+import {
+  splitLetters,
+  splitLetters1,
+  splitLetters2,
+  splitLetters3,
+  splitLetters4,
+  splitLetters5,
+  splitLetters6,
+} from "../Navbar/NavbarComps";
+
+// import NavbarMouseEvents from "../Navbar/NavbarMouseEvents";
 
 interface NavbarProps {
   className?: string;
   id?: string;
+  ref?: string;
 }
 
-const DURATION1 = 0.5;
-const STAGGER1 = 0.04;
-
-const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
+const Navbar: React.FC<NavbarProps> = ({ className, id, ref }) => {
   const btnRef = useRef<HTMLDivElement>(null);
   const btnRef1 = useRef<HTMLDivElement>(null);
   const btnRef2 = useRef<HTMLDivElement>(null);
@@ -271,175 +280,6 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
       btnRef2.current?.removeEventListener("mouseleave", handleMouseLeave2);
     };
   }, []);
-
-  const word = "Miles Morales";
-  const letterVariants = {
-    initial: { opacity: 1, color: "#ffffff" },
-    hover: { opacity: 0.3, color: "#f97316" },
-  };
-
-  const splitLetters = word.split("").map((letter, index) => {
-    return (
-      <motion.span
-        key={index}
-        variants={letterVariants}
-        transition={{
-          duration: DURATION1,
-          delay: index * STAGGER1,
-          ease: "easeOut",
-          repeat: 4,
-        }}
-        className="text-white font-semibold z-40 font-serif pointer-events-none mix-blend-difference"
-      >
-        {letter}
-      </motion.span>
-    );
-  });
-
-  const word1 = "Web Studio";
-  const letterVariants1 = {
-    initial: { opacity: 1, color: "#ffffff" },
-    hover: { opacity: 0.3, color: "#f97316" },
-  };
-
-  const splitLetters1 = word1.split("").map((letter, index) => {
-    return (
-      <motion.span
-        key={index}
-        variants={letterVariants1}
-        transition={{
-          duration: DURATION1,
-          delay: index * STAGGER1,
-          ease: "easeOut",
-          repeat: 4,
-        }}
-        className="text-white font-serif pointer-events-none mix-blend-difference"
-      >
-        {letter}
-      </motion.span>
-    );
-  });
-
-  const word2 = "Vision Studio";
-  const letterVariants2 = {
-    initial: { opacity: 1, color: "#ffffff" },
-    hover: { opacity: 0.3, color: "#f97316" },
-  };
-
-  const splitLetters2 = word2.split("").map((letter, index) => {
-    return (
-      <motion.span
-        key={index}
-        variants={letterVariants2}
-        transition={{
-          duration: DURATION1,
-          delay: index * STAGGER1,
-          ease: "easeOut",
-          repeat: 4,
-        }}
-        className="text-white font-serif pointer-events-none mix-blend-difference"
-      >
-        {letter}
-      </motion.span>
-    );
-  });
-
-  const word3 = "Design Studio";
-  const letterVariants3 = {
-    initial: { opacity: 1, color: "#ffffff" },
-    hover: { opacity: 0.3, color: "#f97316" },
-  };
-
-  const splitLetters3 = word3.split("").map((letter, index) => {
-    return (
-      <motion.span
-        key={index}
-        variants={letterVariants3}
-        transition={{
-          duration: DURATION1,
-          delay: index * STAGGER1,
-          ease: "easeOut",
-          repeat: 4,
-        }}
-        className="text-white font-serif pointer-events-none mix-blend-difference"
-      >
-        {letter}
-      </motion.span>
-    );
-  });
-
-  const word4 = "Catalyst";
-  const letterVariants4 = {
-    initial: { opacity: 1, color: "#ffffff" },
-    hover: { opacity: 0.3, color: "#f97316" },
-  };
-
-  const splitLetters4 = word4.split("").map((letter, index) => {
-    return (
-      <motion.span
-        key={index}
-        variants={letterVariants4}
-        transition={{
-          duration: DURATION1,
-          delay: index * STAGGER1,
-          ease: "easeOut",
-          repeat: 4,
-        }}
-        className="text-white font-serif pointer-events-none mix-blend-difference"
-      >
-        {letter}
-      </motion.span>
-    );
-  });
-
-  const word5 = "Sign In";
-  const letterVariants5 = {
-    initial: { opacity: 1, color: "#ffffff" },
-    hover: { opacity: 0.3, color: "#f97316" },
-  };
-
-  const splitLetters5 = word5.split("").map((letter, index) => {
-    return (
-      <motion.span
-        key={index}
-        variants={letterVariants5}
-        transition={{
-          duration: DURATION1,
-          delay: index * STAGGER1,
-          ease: "easeOut",
-          repeat: 4,
-        }}
-        className="text-white font-serif pointer-events-none mix-blend-difference"
-      >
-        {letter}
-      </motion.span>
-    );
-  });
-
-  const word6 = "Get Started";
-  const letterVariants6 = {
-    initial: { opacity: 1, color: "#ffffff" },
-    hover: { opacity: 0.3, color: "#f97316" },
-  };
-
-  const splitLetters6 = word6.split("").map((letter, index) => {
-    return (
-      <motion.span
-        key={index}
-        variants={letterVariants6}
-        transition={{
-          duration: DURATION1,
-          delay: index * STAGGER1,
-          ease: "easeOut",
-          repeat: 4,
-          border: "",
-        }}
-        className="text-white font-semibold border-white rounded-lg font-serif pointer-events-none mix-blend-difference"
-      >
-        {letter}
-      </motion.span>
-    );
-  });
   return (
     <>
       <nav id="nav" className=" h-16 inset-x-0 bg-black/10 backdrop-blur-lg">
@@ -471,12 +311,12 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
 
             <div className=" text-white flex gap-3 font-serif relative justify-center items-center">
               <div
-                ref={btnRef1}
+                // ref={btnRef1}
                 id="magneto"
                 className="relative flex space-x-9 whitespace-nowrap p-3 items-center cursor-pointer"
               >
                 <div
-                  ref={spanRef1}
+                  // ref={spanRef1}
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
                 />
                 <motion.div
@@ -484,12 +324,7 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
                   whileHover="hover"
                   initial="initial"
                 >
-                  <Link
-                    href="/Web Studio"
-                    className="text-white pointer-events-none mix-blend-difference"
-                  >
-                    {splitLetters1}
-                  </Link>
+                  <Link href="/Web Studio">{splitLetters1}</Link>
                 </motion.div>
 
                 <motion.div
@@ -554,9 +389,12 @@ const Navbar: React.FC<NavbarProps> = ({ className, id }) => {
               </div>
             </div>
 
-            <div ref={btnRef2} className="relative block p-3 ">
+            <div
+              // ref={btnRef2}
+              className="relative block p-3 "
+            >
               <div
-                ref={spanRef2}
+                // ref={spanRef2}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
               />
               <motion.div

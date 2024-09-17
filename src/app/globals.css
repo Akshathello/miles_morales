@@ -126,7 +126,32 @@
 }
 
 .Stardom-Regular{
-  font-family: 'Stardom-Regular', serif
+  font-family: 'Stardom-Regular', serif;
+}
+
+.Stardom-RegularWithoutFill{
+  font-family: 'Stardom-Regular', serif;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.Stardom-RegularWithFill1{
+  font-family: 'Stardom-Regular', serif;
+  -webkit-text-fill-color: rgba(0,0,0,0.5);
+  -webkit-text-stroke-width: 3px;
+}
+
+.Stardom-RegularWithFill2{
+  font-family: 'Stardom-Regular', serif;
+  -webkit-text-fill-color: rgba(147, 51, 234,0.5);
+  -webkit-text-stroke-width: 3px;
+}
+
+.Stardom-RegularWithFill3{
+  font-family: 'Stardom-Regular', serif;
+  -webkit-text-fill-color: rgba(249, 115, 22,0.5);
+  -webkit-text-stroke-width: 3px;
 }
 
 .Boxing-Regular {
@@ -141,7 +166,7 @@
   -webkit-background-clip: text;
 }
 
-.Stardom-Regular1 {
+.Stardom-Regular2 {
   font-family: 'Stardom-Regular', sans-serif;
   background: linear-gradient(to right, #f97316, #9333ea);
   -webkit-text-fill-color: transparent;

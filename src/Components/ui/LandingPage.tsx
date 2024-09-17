@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 // import MovingAnimation from "./Animations/MovingAnimation";
 import Marquee from "./Marquee";
 import { motion } from "framer-motion";
@@ -75,7 +75,7 @@ function LandingPage() {
       {/* <Test /> */}
 
       <div id="landingPage" ref={container} className="overflow-hidden">
-        <div className="min-h-screen bg-black pt-11">
+        <div className="min-h-screen bg-black pt-11 overflow-hidden">
           <div className="flex justify-evenly ">
             <div className=" flex items-center justify-center m-56 ">
               <div

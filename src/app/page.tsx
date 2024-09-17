@@ -4,13 +4,13 @@ import React, { useEffect, useRef, useState } from "react";
 import LandingPage from "@/Components/ui/LandingPage";
 import Marquee from "@/Components/ui/Marquee";
 import WebStudioMain from "@/Components/ui/WebStudio/WebStudioMain";
-import Navbar from "@/Components/ui/Navbar";
+import Navbar from "@/Components/ui/Navbar/Navbar";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DesignStudioMain from "@/Components/ui/DesignStudio/DesignStudioMain";
 import VisionStudioMain from "@/Components/ui/VisionStudio/VisionStudioMain";
-// import Test from "@/Components/ui/Test";
+import Test from "@/Components/ui/Test";
 
 // import Test from "@/Components/ui/Test";
 
@@ -63,7 +63,7 @@ export default function Home() {
         <WebStudioMain></WebStudioMain>
         <DesignStudioMain></DesignStudioMain>
         <VisionStudioMain></VisionStudioMain>
-        {/* <Test></Test> */}
+        <Test></Test>
       </div>
     </>
   );
