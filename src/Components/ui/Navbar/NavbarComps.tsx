@@ -21,7 +21,7 @@ const createSplitLetters = (word: string): React.ReactNode[] => {
           ease: "easeOut",
           repeat: 4,
         }}
-        className="text-white font-semibold z-40 font-serif pointer-events-none mix-blend-difference"
+        className="inline-block whitespace-nowrap text-white font-semibold z-40 font-serif lg:text-[1.05rem] md:text-[0.5rem] sm:text-[0.25rem] pointer-events-none mix-blend-difference"
       >
         {letter}
       </motion.span>

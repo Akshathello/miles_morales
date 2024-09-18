@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DesignStudioMain from "@/Components/ui/DesignStudio/DesignStudioMain";
 import VisionStudioMain from "@/Components/ui/VisionStudio/VisionStudioMain";
 import Test from "@/Components/ui/Test";
+import { animate } from "framer-motion";
 
 // import Test from "@/Components/ui/Test";
 
@@ -42,6 +43,13 @@ export default function Home() {
             opacity: 0,
             duration: 0.3,
             stagger: 0.3,
+          })
+          .from("#btn-animate", {
+            opacity: 0,
+            scale: 0,
+            z: "-200px",
+            duration: 1,
+            ease: "power2.inOut",
           });
       }
     },
@@ -52,11 +60,13 @@ export default function Home() {
 
   return (
     <>
-      <div ref={container} className=" h-5 bg-black sticky top-0 z-50">
+      <div className="opacity-0"></div>
+      <div ref={container} className=" h-0 sticky top-0 z-50">
         <div className="bg-black/0 backdrop-blur-lg scroll-smooth">
           <Navbar />
         </div>
       </div>
+
       <div>
         <LandingPage></LandingPage>
         <Marquee></Marquee>

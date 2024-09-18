@@ -280,137 +280,181 @@ const Navbar: React.FC<NavbarProps> = ({ className, id, ref }) => {
       btnRef2.current?.removeEventListener("mouseleave", handleMouseLeave2);
     };
   }, []);
+
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      if (currentScrollPos > 100 && currentScrollPos > prevScrollPos) {
+        setIsCollapsed(true);
+      } else if (currentScrollPos < prevScrollPos) {
+        setIsCollapsed(false);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+    console.log(handleScroll, "Scroll is working");
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
+  useEffect(() => {
+    if (isCollapsed) {
+      gsap.to("#nav", {
+        // x: "700px",
+        scale: 0,
+        opacity: 0,
+        duration: 1,
+        height: 0,
+        ease: "power2.inOut",
+      });
+    } else {
+      gsap.to("#nav", {
+        // x: "0px",
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        height: 63,
+        ease: "power2.inOut",
+      });
+    }
+  }, [isCollapsed]);
+
   return (
     <>
-      <nav id="nav" className=" h-16 inset-x-0 bg-black/10 backdrop-blur-lg">
+      <nav id="nav" className=" h-16 inset-x-0 backdrop-blur-lg">
         <MaxWidthWrapper>
-          <div className=" flex h-16 items-center justify-between border-b border-zinc-200">
-            <div
-              ref={btnRef}
-              id="magneto"
-              className=" relative block cursor-pointer p-6"
-            >
-              <div
-                ref={spanRef}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
-              />
-              <motion.div
-                className="relative inline-block cursor-pointer"
-                whileHover="hover"
-                initial="initial"
-              >
-                <Link
-                  id="text"
-                  href="/"
-                  className="relative inline-block cursor-pointer"
-                >
-                  <span>{splitLetters}</span>
-                </Link>
-              </motion.div>
+          {isCollapsed ? (
+            <div className=" flex items-center justify-center h-16 ">
+              <ButtonAnimate />
             </div>
-
-            <div className=" text-white flex gap-3 font-serif relative justify-center items-center">
+          ) : (
+            <div className=" flex h-16 lg:items-center md:items-start items-center justify-between border-b border-zinc-200">
               <div
-                // ref={btnRef1}
+                ref={btnRef}
                 id="magneto"
-                className="relative flex space-x-9 whitespace-nowrap p-3 items-center cursor-pointer"
+                className=" relative cursor-pointer lg:p-6 md:p-2 sm:p-0"
               >
                 <div
-                  // ref={spanRef1}
+                  ref={spanRef}
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
                 />
                 <motion.div
-                  className="relative"
+                  className="relative cursor-pointer"
                   whileHover="hover"
                   initial="initial"
                 >
-                  <Link href="/Web Studio">{splitLetters1}</Link>
+                  <Link id="text" href="/" className="relative cursor-pointer">
+                    <span>{splitLetters}</span>
+                  </Link>
                 </motion.div>
+              </div>
 
+              <div className="  flex gap-3">
+                <div
+                  ref={btnRef1}
+                  id="magneto"
+                  className="relative flex space-x-9 whitespace-nowrap p-3 items-center cursor-pointer"
+                >
+                  <div
+                    ref={spanRef1}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
+                  />
+                  <motion.div
+                    className="relative"
+                    whileHover="hover"
+                    initial="initial"
+                  >
+                    <Link href="/Web Studio">{splitLetters1}</Link>
+                  </motion.div>
+
+                  <motion.div
+                    className="relative "
+                    whileHover="hover"
+                    initial="initial"
+                  >
+                    <Link
+                      href="/Vision Studio"
+                      className=" hover:text-orange-500"
+                    >
+                      {splitLetters2}
+                    </Link>
+                  </motion.div>
+
+                  {/* <motion.div
+                  className="relative inline-block cursor-pointer "
+                  whileHover="hover"
+                  initial="initial"
+                > */}
+
+                  <ButtonAnimate></ButtonAnimate>
+
+                  {/* </motion.div> */}
+
+                  {/* <motion.div
+                  className="relative inline-block cursor-pointer "
+                  whileHover="hover"
+                  initial="initial"
+                > */}
+                  <Link
+                    href="/Design Studio"
+                    className=" hover:text-orange-500"
+                  >
+                    {splitLetters3}
+                  </Link>
+                  {/* </motion.div> */}
+
+                  {/* <motion.div
+                  className="relative inline-block cursor-pointer "
+                  whileHover="hover"
+                  initial="initial"
+                > */}
+                  <Link
+                    href="/Catlyst Studio"
+                    className=" hover:text-orange-500"
+                  >
+                    {splitLetters4}
+                  </Link>
+                  {/* </motion.div> */}
+
+                  {/* <motion.div
+                  className="relative inline-block cursor-pointer "
+                  whileHover="hover"
+                  initial="initial"
+                > */}
+                  <Link href="/sign-in" className=" hover:text-orange-500 z-10">
+                    {splitLetters5}
+                  </Link>
+                  {/* </motion.div> */}
+                </div>
+              </div>
+
+              <div ref={btnRef2} className="relative block p-3 ">
+                <div
+                  ref={spanRef2}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
+                />
                 <motion.div
-                  className="relative "
+                  className="relative inline-block cursor-pointer "
                   whileHover="hover"
                   initial="initial"
                 >
                   <Link
-                    href="/Vision Studio"
-                    className="text-white hover:text-orange-500"
+                    href="/sign-up"
+                    className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200  font-semibold p-1 rounded-lg px-3"
                   >
-                    {splitLetters2}
+                    {splitLetters6}
                   </Link>
                 </motion.div>
-
-                {/* <motion.div
-                  className="relative inline-block cursor-pointer "
-                  whileHover="hover"
-                  initial="initial"
-                > */}
-                <ButtonAnimate id="Animate"></ButtonAnimate>
-                {/* </motion.div> */}
-
-                {/* <motion.div
-                  className="relative inline-block cursor-pointer "
-                  whileHover="hover"
-                  initial="initial"
-                > */}
-                <Link
-                  href="/Design Studio"
-                  className="text-white hover:text-orange-500"
-                >
-                  {splitLetters3}
-                </Link>
-                {/* </motion.div> */}
-
-                {/* <motion.div
-                  className="relative inline-block cursor-pointer "
-                  whileHover="hover"
-                  initial="initial"
-                > */}
-                <Link
-                  href="/Catlyst Studio"
-                  className="text-white hover:text-orange-500"
-                >
-                  {splitLetters4}
-                </Link>
-                {/* </motion.div> */}
-
-                {/* <motion.div
-                  className="relative inline-block cursor-pointer "
-                  whileHover="hover"
-                  initial="initial"
-                > */}
-                <Link
-                  href="/sign-in"
-                  className="text-white hover:text-orange-500 z-10"
-                >
-                  {splitLetters5}
-                </Link>
-                {/* </motion.div> */}
               </div>
             </div>
-
-            <div
-              // ref={btnRef2}
-              className="relative block p-3 "
-            >
-              <div
-                // ref={spanRef2}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full h-12 w-12 blur-lg bg-gradient-to-r from-orange-500 to bg-purple-600 text-transparent opacity-0"
-              />
-              <motion.div
-                className="relative inline-block cursor-pointer "
-                whileHover="hover"
-                initial="initial"
-              >
-                <Link
-                  href="/sign-up"
-                  className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200 text-white font-semibold p-1 rounded-lg px-3 font-serif"
-                >
-                  {splitLetters6}
-                </Link>
-              </motion.div>
-            </div>
-          </div>
+          )}
         </MaxWidthWrapper>
       </nav>
     </>
