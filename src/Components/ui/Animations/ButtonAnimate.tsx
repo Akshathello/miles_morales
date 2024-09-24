@@ -3,9 +3,10 @@ import { Button } from "../button";
 
 interface buttonProps {
   id?: string;
+  onClick?:() => void
 }
 
-const ButtonAnimate: React.FC<buttonProps> = ({ id }) => {
+const ButtonAnimate: React.FC<buttonProps> = ({ id,onClick }) => {
   return (
     <div id="btn-animate" className="relative flex justify-end h-9 w-9">
       {/* <div className="absolute inline-flex rounded-full h-full w-full bg-gradient-to-r from-orange-500 to bg-purple-600 animate-pingScale"></div> */}

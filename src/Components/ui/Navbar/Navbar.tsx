@@ -23,9 +23,10 @@ interface NavbarProps {
   className?: string;
   id?: string;
   ref?: string;
+  onClick?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ className, id, ref }) => {
+const Navbar: React.FC<NavbarProps> = ({ className, id, ref, onClick }) => {
   const btnRef = useRef<HTMLDivElement>(null);
   const btnRef1 = useRef<HTMLDivElement>(null);
   const btnRef2 = useRef<HTMLDivElement>(null);
@@ -295,7 +296,7 @@ const Navbar: React.FC<NavbarProps> = ({ className, id, ref }) => {
 
       setPrevScrollPos(currentScrollPos);
     };
-    console.log(handleScroll, "Scroll is working");
+    // console.log(handleScroll, "Scroll is working");
 
     window.addEventListener("scroll", handleScroll);
 
@@ -326,20 +327,31 @@ const Navbar: React.FC<NavbarProps> = ({ className, id, ref }) => {
     }
   }, [isCollapsed]);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  console.log(toggleDropdown, "It is working");
+
   return (
     <>
-      <nav id="nav" className=" h-16 inset-x-0 backdrop-blur-lg">
-        <MaxWidthWrapper>
+      <nav
+        id="nav"
+        className="hidden lg:block md:block sm:hidden h-16 inset-x-0 backdrop-blur-lg max-w-full "
+      >
+        <MaxWidthWrapper className="">
           {isCollapsed ? (
-            <div className=" flex items-center justify-center h-16 ">
+            <div className="flex items-center justify-center h-16 ">
               <ButtonAnimate />
             </div>
           ) : (
-            <div className=" flex h-16 lg:items-center md:items-start items-center justify-between border-b border-zinc-200">
+            <div className=" flex h-16 lg:items-center justify-between border-b border-zinc-200">
               <div
                 ref={btnRef}
                 id="magneto"
-                className=" relative cursor-pointer lg:p-6 md:p-2 sm:p-0"
+                className=" relative cursor-pointer lg:p-6 md:p-0 p-0"
               >
                 <div
                   ref={spanRef}
@@ -350,13 +362,17 @@ const Navbar: React.FC<NavbarProps> = ({ className, id, ref }) => {
                   whileHover="hover"
                   initial="initial"
                 >
-                  <Link id="text" href="/" className="relative cursor-pointer">
+                  <Link
+                    id="text"
+                    href="/"
+                    className="relative cursor-pointer inline-block whitespace-nowrap md:mt-5 lg:mt-0"
+                  >
                     <span>{splitLetters}</span>
                   </Link>
                 </motion.div>
               </div>
 
-              <div className="  flex gap-3">
+              <div className="flex gap-3">
                 <div
                   ref={btnRef1}
                   id="magneto"
@@ -447,7 +463,7 @@ const Navbar: React.FC<NavbarProps> = ({ className, id, ref }) => {
                 >
                   <Link
                     href="/sign-up"
-                    className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200  font-semibold p-1 rounded-lg px-3"
+                    className=" hover:duration-300 border-2 border-white hover:border-orange-500 duration-200  font-semibold md:p-0 lg:p-1 rounded-lg md:px-2 lg:px-3 inline-block whitespace-nowrap md:mt-1 lg:mt-0"
                   >
                     {splitLetters6}
                   </Link>
@@ -456,6 +472,65 @@ const Navbar: React.FC<NavbarProps> = ({ className, id, ref }) => {
             </div>
           )}
         </MaxWidthWrapper>
+      </nav>
+
+      <nav className=" block sm:block md:hidden lg:hidden">
+        <div className="flex justify-between items-center p-4 ">
+          <ButtonAnimate onClick={toggleDropdown} />
+        </div>
+        <motion.div
+          initial={{ height: 1, opacity: 0 }}
+          animate={{
+            height: isOpen ? "auto" : 0,
+            opacity: isOpen ? 1 : 0,
+          }}
+          className={`${isOpen ? "block" : "hidden"} overflow-hidden`}
+        >
+          <ul className="flex flex-col p-4 space-y-4">
+            <li>
+              <Link
+                href="/Web Studio"
+                className="block hover:text-orange-500 text-white text-[2rem]"
+              >
+                {splitLetters}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/Vision Studio"
+                className="block hover:text-orange-500"
+              >
+                Vision Studio
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/Design Studio"
+                className="block hover:text-orange-500"
+              >
+                Design Studio
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/Catalyst Studio"
+                className="block hover:text-orange-500"
+              >
+                Catalyst Studio
+              </Link>
+            </li>
+            <li>
+              <Link href="/sign-in" className="block hover:text-orange-500">
+                Sign In
+              </Link>
+            </li>
+            <li>
+              <Link href="/sign-up" className="block hover:text-orange-500">
+                Sign Up
+              </Link>
+            </li>
+          </ul>
+        </motion.div>
       </nav>
     </>
   );

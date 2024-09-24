@@ -4,9 +4,6 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import Navbar from "./Navbar/Navbar";
-// import MovingAnimation from "./Animations/MovingAnimation";
-import Marquee from "./Marquee";
 import { motion } from "framer-motion";
 import mousePointer from "../utils/mousePointer";
 import MovingAnimation from "./Animations/MovingAnimation";
@@ -76,11 +73,11 @@ function LandingPage() {
 
       <div id="landingPage" ref={container} className="overflow-hidden">
         <div className="min-h-screen bg-black pt-11 overflow-hidden">
-          <div className="flex justify-evenly ">
+          <div className="lg:flex md:flex flex-row flex-1 justify-evenly ">
             <div className=" flex items-center justify-center m-56 ">
               <div
                 id="Writeup1"
-                className=" absolute serif-stroke3 font-serif text-[10rem] leading-none text-center p-40 "
+                className=" absolute serif-stroke3 font-serif lg:text-[10rem] md:text-[7rem] text-[7rem] leading-none text-center p-40 inline-block whitespace-nowrap"
               >
                 Miles <br></br> Morales <br />
               </div>
@@ -95,7 +92,7 @@ function LandingPage() {
                   WebkitMaskSize: `${size}px`,
                 }}
                 id="Writeup"
-                className=" absolute font-serif text-black text-[10rem] leading-none text-center mask1 p-44"
+                className=" absolute font-serif text-black lg:text-[10rem] md:text-[7rem] text-[7rem] leading-none text-center mask1 p-44"
               >
                 <div
                   onMouseEnter={() => {
@@ -120,7 +117,7 @@ function LandingPage() {
                 height={500}
                 quality={100}
                 style={{ objectFit: "fill" }}
-                className=""
+                className="z-30"
               />
 
               {/* <motion.div
