@@ -12,7 +12,7 @@ function WebStudioBannerWithMask() {
   return (
     <>
       {" "}
-      <div className="flex">
+      <div className="flex justify-center items-center rounded-lg">
         <WebStudioBanner />
         <motion.div
           animate={{
@@ -24,7 +24,7 @@ function WebStudioBannerWithMask() {
             WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
             WebkitMaskSize: `${size}px`,
           }}
-          className="absolute mask2"
+          className="absolute mask2 bg-gradient-to-r from-orange-500 to bg-purple-600 -mr-1"
         >
           <div className="">
             <div

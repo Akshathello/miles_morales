@@ -9,7 +9,7 @@ function WebStudioBlurryLetters() {
   const size = isHovered ? 400 : 40;
   return (
     <>
-      <div className="  font-serif text-white text-[4rem] text-center blur-sm p-28 m-5 -mt-14 leading-[65px]">
+      <div className="  font-serif text-white lg:text-[4rem] md:text-[2.5rem] text-[1rem] text-center blur-sm lg:p-28 md:p-14 p-0 m-5 -mt-14 leading-[65px]">
         Godly Experience. The finer Level. The cosmic level. An experience like
         none another. What it TAKES!. Passion Driven. Take the plunge. Miles to
         Go!. Nonstop. Vision. Plan. Get Set Go!
@@ -24,7 +24,7 @@ function WebStudioBlurryLetters() {
           WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
           WebkitMaskSize: `${size}px`,
         }}
-        className="absolute leading-[65px] font-serif text-[4rem] mask p-28 -mt-14 m-5"
+        className="absolute leading-[65px] font-serif lg:text-[4rem] md:text-[2.5rem] text-[1rem] mask lg:p-28 md:p-14 p-0 -mt-14 m-5"
       >
         <div
           onMouseEnter={() => {

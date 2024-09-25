@@ -31,14 +31,14 @@ function WebStudioBanner() {
   }, [scrollYProgress]);
 
   return (
-    <div className=" px-[19rem] py-9 items-start -mb-9 pt-[5rem] ">
+    <div className="flex py-9 -mb-9 pt-[5rem] w-full justify-center items-center">
       <div className="flex relative">
         <motion.div
           ref={element}
           style={{ opacity, translateY, scale }}
           initial={{ opacity: 0, y: 100, scale: 0.3 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          className={`absolute inset-0.5 rounded-lg bg-gradient-to-r from-orange-500 to bg-purple-600  blur-lg opacity-100 ${
+          className={`absolute inset-0.5 rounded-lg bg-gradient-to-r from-orange-500 to bg-purple-600 blur-lg opacity-100 ${
             isPulsing ? "animate-pulse" : ""
           }`}
         ></motion.div>
@@ -47,9 +47,9 @@ function WebStudioBanner() {
           ref={element}
           layout
           style={{ opacity: scrollYProgress }}
-          className="relative px-5 py4 bg-black rounded-lg leading-none flex items-center justify-center"
+          className=" bg-black rounded-lg leading-none flex relative text-center"
         >
-          <span className="text-gray-100 text-[11rem] whitespace-nowrap font-serif serif-stroke2 italic">
+          <span className="text-gray-100 lg:text-[11rem] md:text-[6rem] text-[3rem] whitespace-nowrap font-serif serif-stroke2 italic">
             Web Studio
           </span>
 
@@ -57,19 +57,19 @@ function WebStudioBanner() {
             ref={element}
             layout
             style={{ opacity: scrollYProgress }}
-            className="absolute text-gray-100 text-[10.8rem] whitespace-nowrap font-serif italic"
+            className="absolute text-gray-100 lg:text-[11rem] md:text-[6rem] text-[3rem] whitespace-nowrap font-serif italic"
           >
             Web Studio
           </motion.span>
 
-          <span className="absolute text-[10.8rem] whitespace-nowrap font-serif italic blur-sm">
+          <span className="absolute lg:text-[11rem] md:text-[6rem] text-[3rem] whitespace-nowrap font-serif italic blur-sm">
             Web Studio
           </span>
 
           <motion.span
             ref={element}
             style={{ opacity: scrollYProgress }}
-            className="absolute text-[#ff6590] text-[10.8rem] whitespace-nowrap font-serif italic blur-sm"
+            className="absolute text-[#ff6590] lg:text-[11rem] md:text-[6rem] text-[3rem] whitespace-nowrap font-serif italic blur-sm"
           >
             Web Studio
           </motion.span>

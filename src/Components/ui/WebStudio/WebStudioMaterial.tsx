@@ -202,13 +202,13 @@ const WebStudioMaterial = forwardRef<HTMLDivElement, WebProps>(
       <div
         id="WebElem"
         ref={container}
-        className="flex absolute justify-center items-center mb-72"
+        className="flex flex-1 flex-wrap absolute justify-center items-center mb-72"
       >
-        <div className="h-[580px] w-[1500px] rounded-lg absolute inset-0.5 bg-gradient-to-r from-orange-500 to bg-purple-600 opacity-100 blur-lg">
+        <div className="lg:h-[580px] lg:w-[1500px] md:h-[340px] md:w-[1100] h-[200px] w-[1000px] rounded-lg absolute inset-0.5 bg-gradient-to-r from-orange-500 to bg-purple-600 opacity-100 blur-lg">
           {""}
         </div>
 
-        <span className="h-[580px] w-[1500px] rounded-lg relative bg-black text-[3rem] text- font-serif z-10 text-center leading-[3.25rem] p-10 inline-block text-white">
+        <span className="lg:h-[580px] lg:w-[1500px] md:h-[510px] md:w-[1100] h-[200px] w-[1000px] rounded-lg relative bg-black lg:text-[3rem] md:text-[1.75rem] text-[1rem] font-serif z-10 text-center lg:leading-[3.25rem] md:leading-[2.25rem] leading-[1rem]  p-10 inline-block text-white">
           {splitTextIntoSpans(
             `We can steer the audience, only if we are enough to do so. The name is a culmination of generic words but it engulfs the constant stream of creativity. Fundamentally speaking, A website offers an analysis into your business and it tailors an intricate discussion with the user which acts as a precursor to the of the business. The underlying passion can be highlighted through this facade,hence the name`,
             0,
